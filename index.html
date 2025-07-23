@@ -1,0 +1,2085 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Mangus</title>
+    <link href="logo.png" rel="icon" type="image/png" />
+    <link href="logo.png" rel="shortcut icon" type="image/png" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-color: #f59e0b;
+            --secondary-color: #f0f2f4;
+            --background-color: #ffffff;
+            --text-primary: #111418;
+            --text-secondary: #637488;
+            --accent-color: #fffbeb;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+        }
+        .button_primary {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: bold;
+            outline: none;
+            transition-property: background-color, color, transform;
+            transition-duration: 150ms;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .button_primary:hover {
+            background-color: #f59e0b;
+            animation: bounceBtn 0.4s;
+        }
+        .button_primary:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #f59e0b40;
+        }
+        @keyframes bounceBtn {
+            0% { transform: scale(1);}
+            30% { transform: scale(1.08);}
+            60% { transform: scale(0.96);}
+            100% { transform: scale(1);}
+        }
+        .button_secondary {
+            background-color: var(--secondary-color);
+            color: var(--text-primary);
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: bold;
+            outline: none;
+            transition-property: background-color, color;
+            transition-duration: 150ms;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .button_secondary:hover {
+            background-color: #d1d5db;
+        }
+        .button_secondary:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #f59e0b40;
+        }
+        
+        .button_white {
+            background-color: white !important;
+            color: var(--primary-color) !important;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: bold;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-duration: 150ms;
+            outline: none;
+            box-shadow: none;
+            border: none;
+            transition: transform 0.2s;
+        }
+        
+        .button_white:hover {
+            background-color: #f3f4f6 !important;
+            color: #d97706 !important;
+            animation: bounceBtn 0.4s;
+        }
+        
+        /* CTA section */
+        .cta-section {
+            background: linear-gradient(to bottom right, var(--primary-color), #f97316);
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 10;
+        }
+        .section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        .section_title {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateX(-40px);
+            animation: slideInTitle 0.8s forwards;
+        }
+        @keyframes slideInTitle {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .section_subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            text-align: center;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .pricing-card {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        /* Animation styles */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            animation: fadeInUpScale 1s forwards;
+        }
+        @keyframes fadeInUpScale {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        /* Parallax hero background */
+        .parallax-bg {
+            background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1470&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        @media (max-width: 768px) {
+            .parallax-bg {
+                background-attachment: scroll;
+            }
+        }
+        /* Card animation */
+        .card-animate {
+            opacity: 0;
+            transform: translateY(40px) scale(0.96);
+            animation: cardFadeIn 0.8s forwards;
+        }
+        @keyframes cardFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        /* Icon pop animation */
+        .icon-pop {
+            transition: transform 0.2s;
+        }
+        .icon-pop:hover {
+            animation: iconPop 0.4s;
+        }
+        @keyframes iconPop {
+            0% { transform: scale(1);}
+            50% { transform: scale(1.2);}
+            100% { transform: scale(1);}
+        }
+        /* Modern card styles */
+        .modern-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            border: 1px solid rgba(241, 245, 249, 0.8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        .modern-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        .modern-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), #f97316);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modern-card:hover::before {
+            opacity: 1;
+        }
+        .card-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #fef3c7 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .modern-card:hover .card-icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #f97316 100%);
+        }
+        .modern-card:hover .card-icon-wrapper svg {
+            color: white;
+        }
+        .card-icon-wrapper svg {
+            width: 40px;
+            height: 40px;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, #374151 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .card-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .card-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .feature-icon svg {
+            width: 12px;
+            height: 12px;
+            color: white;
+        }
+        /* Minimal stepper for How it works */
+        .stepper {
+            position: relative;
+            max-width: 64rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .steps-progress {
+            height: 4px;
+            background: #eef2f7;
+            border-radius: 9999px;
+            overflow: hidden;
+            position: relative;
+        }
+        .steps-progress-fill {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--primary-color), #f97316);
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .steps-progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        #how-stepper.animate .steps-progress-fill {
+            width: 33.33%;
+            transition: width 0.8s ease;
+        }
+        #how-stepper.animate-step-2 .steps-progress-fill {
+            width: 66.66%;
+            transition: width 0.8s ease;
+        }
+        #how-stepper.animate-step-3 .steps-progress-fill {
+            width: 100%;
+            transition: width 0.8s ease;
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .steps-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+        }
+        .step {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(241, 245, 249, 0.9);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(8px);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            opacity: 0;
+            transform: translateY(18px) scale(0.98);
+        }
+        .step:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 16px 24px -8px rgba(0,0,0,0.12);
+            border-color: rgba(245, 158, 11, 0.25);
+        }
+        #how-stepper.animate .step:nth-child(1) { 
+            opacity: 1; 
+            transform: translateY(0) scale(1); 
+            transition: all 0.6s ease; 
+        }
+        #how-stepper.animate-step-2 .step:nth-child(2) { 
+            opacity: 1; 
+            transform: translateY(0) scale(1); 
+            transition: all 0.6s ease; 
+        }
+        #how-stepper.animate-step-3 .step:nth-child(3) { 
+            opacity: 1; 
+            transform: translateY(0) scale(1); 
+            transition: all 0.6s ease; 
+        }
+        .step-number {
+            width: 44px;
+            height: 44px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color), #f97316);
+            box-shadow: 0 6px 16px rgba(245, 158, 11, 0.35);
+            margin-bottom: 0.75rem;
+        }
+        .step-title {
+            font-weight: 800;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        .step-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .hidden {
+            display: none;
+        }
+        
+        /* Enhanced pricing cards */
+        #pricing .modern-card {
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #pricing .modern-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), #f97316);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        #pricing .modern-card:hover::before {
+            opacity: 1;
+        }
+        
+        #pricing .modern-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        
+        #pricing .modern-card:nth-child(2) {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px -12px rgba(245, 158, 11, 0.2);
+        }
+        
+        #pricing .modern-card:nth-child(2):hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+        
+        #pricing .modern-card:nth-child(2)::before {
+            opacity: 1;
+        }
+        
+        /* Featured badge for middle card */
+        #pricing .modern-card:nth-child(2)::after {
+            content: 'Популярный';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), #f97316);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transform: rotate(15deg);
+            z-index: 10;
+        }
+        
+        /* Enhanced price styling */
+        #pricing .text-4xl {
+            background: linear-gradient(135deg, var(--primary-color), #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Floating animation for featured card */
+        #pricing .modern-card:nth-child(2) {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: scale(1.05) translateY(0px); }
+            50% { transform: scale(1.05) translateY(-10px); }
+        }
+        
+        /* Hero Section Styles */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(252, 211, 77, 0.05) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 30%, rgba(245, 158, 11, 0.03) 50%, transparent 70%);
+            animation: patternFloat 20s ease-in-out infinite;
+            filter: blur(0.5px);
+        }
+        
+        .hero-bg-pattern::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(245, 158, 11, 0.02) 10px,
+                    rgba(245, 158, 11, 0.02) 20px
+                );
+            animation: patternMove 30s linear infinite;
+        }
+        
+        @keyframes patternMove {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+        
+        @keyframes patternFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), #f97316);
+            opacity: 0.1;
+            animation: shapeFloat 15s ease-in-out infinite;
+        }
+        
+        .shape-1 {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        .shape-4 {
+            width: 60px;
+            height: 60px;
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 6s;
+        }
+        
+        .shape-5 {
+            width: 90px;
+            height: 90px;
+            top: 60%;
+            left: 5%;
+            animation-delay: 8s;
+        }
+        
+        .shape-6 {
+            width: 70px;
+            height: 70px;
+            top: 70%;
+            right: 5%;
+            animation-delay: 10s;
+        }
+        
+        @keyframes shapeFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1) rotateX(0deg) rotateY(0deg); 
+                filter: hue-rotate(0deg);
+            }
+            25% { 
+                transform: translateY(-30px) rotate(90deg) scale(1.1) rotateX(15deg) rotateY(15deg); 
+                filter: hue-rotate(90deg);
+            }
+            50% { 
+                transform: translateY(-15px) rotate(180deg) scale(0.9) rotateX(-15deg) rotateY(-15deg); 
+                filter: hue-rotate(180deg);
+            }
+            75% { 
+                transform: translateY(-40px) rotate(270deg) scale(1.05) rotateX(30deg) rotateY(30deg); 
+                filter: hue-rotate(270deg);
+            }
+        }
+        
+        .hero-content {
+            padding: 4rem 0;
+        }
+        
+        .hero-logo {
+            margin-bottom: 3rem;
+        }
+        
+        .logo-container {
+            display: inline-block;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            box-shadow: 0 25px 50px rgba(245, 158, 11, 0.3), 0 0 0 4px rgba(245, 158, 11, 0.1);
+            animation: logoFloat 6s ease-in-out infinite, logoPulse 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(245, 158, 11, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: conic-gradient(from 0deg, transparent, rgba(245, 158, 11, 0.4), transparent);
+            animation: logoRotate 4s linear infinite;
+            filter: blur(1px);
+        }
+        
+        .logo-container::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: transparent;
+            border-radius: 50%;
+        }
+        
+        /* Hover effects for logo */
+        .logo-container:hover {
+            transform: scale(1.1);
+            box-shadow: 0 30px 60px rgba(245, 158, 11, 0.4), 0 0 0 6px rgba(245, 158, 11, 0.3);
+            border-color: rgba(245, 158, 11, 0.4);
+        }
+        
+        .logo-container:hover .logo-svg {
+            filter: drop-shadow(0 6px 12px rgba(245, 158, 11, 0.7)) brightness(1.4) contrast(1.5);
+        }
+        
+
+        
+        @keyframes logoPulse {
+            0%, 100% { 
+                box-shadow: 0 25px 50px rgba(245, 158, 11, 0.3), 0 0 0 4px rgba(245, 158, 11, 0.1);
+            }
+            50% { 
+                box-shadow: 0 25px 50px rgba(245, 158, 11, 0.4), 0 0 0 4px rgba(245, 158, 11, 0.2);
+            }
+        }
+        
+        @keyframes logoRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1); 
+                box-shadow: 0 25px 50px rgba(245, 158, 11, 0.3), 0 0 0 4px rgba(245, 158, 11, 0.1);
+            }
+            50% { 
+                transform: translateY(-20px) rotate(8deg) scale(1.05); 
+                box-shadow: 0 35px 70px rgba(245, 158, 11, 0.4), 0 0 0 6px rgba(245, 158, 11, 0.2);
+            }
+        }
+        
+        .logo-svg {
+            width: 64px;
+            height: 64px;
+            animation: logoSwing 4s ease-in-out infinite;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.5)) brightness(1.2) contrast(1.3);
+            position: relative;
+            z-index: 10;
+        }
+        
+        @keyframes logoSwing {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(12deg) scale(1.02); }
+            75% { transform: rotate(-12deg) scale(1.02); }
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+        
+        .title-line {
+            display: block;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: titleSlideIn 0.8s ease-out forwards;
+        }
+        
+        .title-line:nth-child(1) { animation-delay: 0.2s; }
+        .title-line:nth-child(2) { animation-delay: 0.4s; }
+        .title-line:nth-child(3) { animation-delay: 0.6s; }
+        .title-line:nth-child(4) { animation-delay: 0.8s; }
+        
+        @keyframes titleSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .title-line.highlight {
+            background: linear-gradient(135deg, var(--primary-color), #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Ensure highlight text is always visible */
+        .title-line.highlight,
+        .hero-section:hover .title-line.highlight,
+        .hero-title:hover .title-line.highlight,
+        .title-line.highlight:hover {
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: inline-block !important;
+            background: linear-gradient(135deg, var(--primary-color), #f97316) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+        
+        .title-line.highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), #f97316);
+            border-radius: 2px;
+            transform: translateX(-50%);
+            animation: highlightExpand 1s ease-out 1s forwards;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+            animation-fill-mode: forwards;
+            will-change: width;
+        }
+        
+        .title-line.highlight::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+            border-radius: 20px;
+            animation: highlightGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes highlightGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        
+        @keyframes highlightExpand {
+            to { width: 100%; }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 4xl;
+            margin: 0 auto 3rem auto;
+            line-height: 1.6;
+        }
+        
+        .subtitle-text {
+            display: block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: subtitleSlideIn 0.6s ease-out forwards;
+        }
+        
+        .subtitle-text:nth-child(1) { animation-delay: 1s; }
+        .subtitle-text:nth-child(2) { animation-delay: 1.2s; }
+        .subtitle-text:nth-child(3) { animation-delay: 1.4s; }
+        .subtitle-text:nth-child(4) { animation-delay: 1.6s; }
+        
+        @keyframes subtitleSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-cta {
+            margin-top: 3rem;
+        }
+        
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary-color), #f97316);
+            color: white;
+            border: none;
+            border-radius: 3rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+            animation: buttonPulse 2s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+        
+        .hero-button::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #f97316, var(--primary-color));
+            border-radius: 3rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .hero-button:hover::after {
+            opacity: 1;
+        }
+        
+        .hero-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .hero-button:hover::before {
+            left: 100%;
+        }
+        
+        .hero-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.4);
+        }
+        
+        @keyframes buttonPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .button-text {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .button-icon {
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-button:hover .button-icon {
+            transform: translateX(5px);
+        }
+        
+        .button-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Particles */
+        .particles-container {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: particleFloat 8s linear infinite;
+        }
+        
+        .particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 30%; right: 20%; animation-delay: 1s; }
+        .particle:nth-child(3) { top: 50%; left: 15%; animation-delay: 2s; }
+        .particle:nth-child(4) { top: 60%; right: 10%; animation-delay: 3s; }
+        .particle:nth-child(5) { top: 80%; left: 25%; animation-delay: 4s; }
+        .particle:nth-child(6) { top: 15%; right: 30%; animation-delay: 5s; }
+        .particle:nth-child(7) { top: 40%; left: 5%; animation-delay: 6s; }
+        .particle:nth-child(8) { top: 70%; right: 25%; animation-delay: 7s; }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(0px) translateX(0px) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+                transform: translateY(-20px) translateX(10px) scale(1);
+            }
+            90% {
+                opacity: 0.6;
+                transform: translateY(-100px) translateX(50px) scale(1);
+            }
+            100% {
+                transform: translateY(-120px) translateX(60px) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        /* Enhanced button animations for pricing */
+        #pricing .button_primary {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        #pricing .button_primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        #pricing .button_primary:hover::before {
+            left: 100%;
+        }
+        
+        #pricing .button_primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+        }
+        
+        /* Hero visible state */
+        .hero-section.hero-visible .shape {
+            animation-play-state: running;
+        }
+        
+        .hero-section.hero-visible .logo-container {
+            animation-play-state: running;
+        }
+        
+        .hero-section.hero-visible .logo-svg {
+            animation-play-state: running;
+        }
+        
+        .hero-section.hero-visible .particle {
+            animation-play-state: running;
+        }
+        
+        /* Enhanced hover effects */
+        .hero-section:hover .shape {
+            filter: brightness(1.2) contrast(1.1);
+        }
+        
+        .hero-section:hover .particle {
+            filter: brightness(1.5);
+        }
+        
+        /* Prevent highlight from disappearing on hover */
+        .hero-section:hover .title-line.highlight::after {
+            width: 100% !important;
+            animation: none !important;
+        }
+        
+        /* Ensure highlight stays visible */
+        .title-line.highlight::after {
+            transition: width 0.3s ease;
+        }
+        
+        /* Glitch effect for title on hover */
+        .hero-title:hover .title-line.highlight {
+            animation: glitch 0.3s ease-in-out;
+        }
+        
+        /* Prevent any conflicts with highlight animations */
+        .title-line.highlight *,
+        .title-line.highlight::before,
+        .title-line.highlight::after {
+            pointer-events: none;
+        }
+        
+        /* Ensure highlight container is stable */
+        .title-line.highlight {
+            transform: none !important;
+            filter: none !important;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-2px); }
+            40% { transform: translateX(2px); }
+            60% { transform: translateX(-1px); }
+            80% { transform: translateX(1px); }
+        }
+        
+        /* Mobile menu animations */
+        #mobile-menu {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: white !important;
+            background: white !important;
+        }
+        
+        #mobile-menu.translate-x-full {
+            transform: translateX(100%);
+        }
+        
+        /* Force opaque background for mobile menu and its contents */
+        #mobile-menu,
+        #mobile-menu * {
+            background-color: white !important;
+            background: white !important;
+        }
+        
+        #mobile-menu nav,
+        #mobile-menu .flex-1 {
+            background-color: white !important;
+            background: white !important;
+        }
+        
+        /* Beautiful mobile menu button */
+        #menu-toggle {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #menu-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 0.5rem;
+        }
+        
+        #menu-toggle:hover::before {
+            opacity: 0.1;
+        }
+        
+        #menu-toggle:active {
+            transform: scale(0.95);
+        }
+        
+        /* Menu button line animations */
+        #menu-toggle span {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #menu-toggle:hover span:nth-child(1) {
+            transform: rotate(45deg) translateY(6px);
+        }
+        
+        #menu-toggle:hover span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        
+        #menu-toggle:hover span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-6px);
+        }
+    </style>
+</head>
+
+<body class="bg-[var(--background-color)] text-[var(--text-primary)]">
+    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header class="bg-[var(--background-color)]/80 backdrop-blur-sm sticky top-0 z-50" role="banner">
+                <div class="container mx-auto flex items-center justify-between whitespace-nowrap px-6 py-4">
+                    <div class="flex items-center gap-3 text-[var(--text-primary)]">
+                        <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                            <div class="size-8 text-[var(--primary-color)]">
+                                <img src="logo.png" alt="Mangus Logo" class="w-8 h-8 object-contain">
+                            </div>
+                            <h2 class="text-[var(--text-primary)] text-xl font-bold leading-tight tracking-[-0.015em]">
+                                Mangus</h2>
+                        </a>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-8" role="navigation" aria-label="Main navigation">
+                        <a class="text-[var(--primary-color)] font-medium text-base leading-normal"
+                            href="index.html">Главная</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="how-it-works.html">Как это работает</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="business-benefits.html">Преимущества для бизнеса</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="customer-benefits.html">Возможности для клиентов</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="pricing.html">Тарифы</a>
+                    </nav>
+                    <div class="flex items-center gap-4">
+                        <!-- <a class="button_secondary" href="#">Вход</a> -->
+                        <!-- <a class="button_primary hidden sm:inline-flex" href="#">Регистрация</a> -->
+                        
+                        <!-- Mobile menu button -->
+                        <div class="md:hidden">
+                            <button class="relative group p-2 rounded-lg hover:bg-[var(--primary-color)]/10 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]/20" aria-label="Toggle menu" id="menu-toggle">
+                                <div class="flex flex-col items-center justify-center w-6 h-6">
+                                    <span class="w-5 h-0.5 bg-[var(--primary-color)] rounded-full transition-all duration-200 group-hover:bg-[var(--primary-color)] transform group-hover:rotate-45 group-hover:translate-y-1.5"></span>
+                                    <span class="w-5 h-0.5 bg-[var(--primary-color)] rounded-full transition-all duration-200 group-hover:bg-[var(--primary-color)] opacity-100 group-hover:opacity-0 mt-1"></span>
+                                    <span class="w-5 h-0.5 bg-[var(--primary-color)] rounded-full transition-all duration-200 group-hover:bg-[var(--primary-color)] transform group-hover:-rotate-45 group-hover:-translate-y-1.5 mt-1"></span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="mobile-menu" class="hidden md:hidden fixed top-0 right-0 h-full w-80 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-50" style="background-color: white !important; background: white !important;">
+                    <div class="flex flex-col h-full" style="background-color: white !important; background: white !important;">
+                        <!-- Header with close button -->
+                        <div class="flex items-center justify-between p-6 border-b border-gray-200" style="background-color: white !important; background: white !important;">
+                            <h3 class="text-lg font-bold text-[var(--text-primary)]">Меню</h3>
+                            <button class="text-gray-500 hover:text-[var(--text-primary)] transition-colors" id="close-menu">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Navigation links -->
+                        <nav class="flex-1 px-6 py-8" aria-label="Mobile navigation" style="background-color: white !important; background: white !important;">
+                            <div class="space-y-6" style="background-color: white !important; background: white !important;">
+                                <a class="flex items-center gap-3 text-lg font-medium text-[var(--primary-color)] transition-all duration-200 hover:translate-x-2" href="index.html">
+                                    <span class="w-2 h-2 bg-[var(--primary-color)] rounded-full"></span>
+                                    Главная
+                                </a>
+                                <a class="flex items-center gap-3 text-lg font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all duration-200 hover:translate-x-2" href="how-it-works.html">
+                                    <span class="w-2 h-2 bg-[var(--primary-color)] rounded-full"></span>
+                                    Как это работает
+                                </a>
+                                <a class="flex items-center gap-3 text-lg font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all duration-200 hover:translate-x-2" href="business-benefits.html">
+                                    <span class="w-2 h-2 bg-[var(--primary-color)] rounded-full"></span>
+                                    Преимущества для бизнеса
+                                </a>
+                                <a class="flex items-center gap-3 text-lg font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all duration-200 hover:translate-x-2" href="customer-benefits.html">
+                                    <span class="w-2 h-2 bg-[var(--primary-color)] rounded-full"></span>
+                                    Возможности для клиентов
+                                </a>
+                                <a class="flex items-center gap-3 text-lg font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all duration-200 hover:translate-x-2" href="pricing.html">
+                                    <span class="w-2 h-2 bg-[var(--primary-color)] rounded-full"></span>
+                                    Тарифы
+                                </a>
+                            </div>
+                        </nav>
+                        
+                        <!-- Footer -->
+                        <div class="p-6 border-t border-gray-200" style="background-color: white !important; background: white !important;">
+                            <div class="text-center" style="background-color: white !important; background: white !important;">
+                                <p class="text-sm text-gray-500 mb-2">Mangus</p>
+                                <p class="text-xs text-gray-400">Превратите клиентов в капитал</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <section id="home" class="hero-section relative overflow-hidden" role="region" aria-labelledby="home-title">
+                    <!-- Animated background elements -->
+                    <div class="hero-bg-pattern"></div>
+                    <div class="floating-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
+                        <div class="shape shape-4"></div>
+                        <div class="shape shape-5"></div>
+                        <div class="shape shape-6"></div>
+                    </div>
+                    
+                    <!-- Interactive particles -->
+                    <div class="particles-container">
+                        <div class="particle" data-speed="0.5"></div>
+                        <div class="particle" data-speed="0.8"></div>
+                        <div class="particle" data-speed="1.2"></div>
+                        <div class="particle" data-speed="0.6"></div>
+                        <div class="particle" data-speed="1.0"></div>
+                        <div class="particle" data-speed="0.7"></div>
+                        <div class="particle" data-speed="0.9"></div>
+                        <div class="particle" data-speed="1.1"></div>
+                    </div>
+                    
+                    <div class="container mx-auto px-6 relative z-10">
+                        <div class="hero-content text-center">
+                                                <!-- Animated logo -->
+                    <div class="hero-logo mb-8">
+                        <div class="logo-container">
+                            <img src="logo.png" alt="Mangus Logo" class="logo-svg">
+                        </div>
+                    </div>
+                            
+                            <!-- Main title with typewriter effect -->
+                            <h1 id="home-title" class="hero-title mb-6">
+                                <span class="title-line">Mangus</span>
+                                <span class="title-line">где ваши клиенты</span>
+                                <span class="title-line">становятся вашим</span>
+                                <span class="title-line highlight">капиталом</span>
+                            </h1>
+                            
+                            <!-- Animated subtitle -->
+                            <p class="hero-subtitle mb-12">
+                                <span class="subtitle-text">Это новый бизнес-инструмент, который превращает</span>
+                                <span class="subtitle-text">разовых покупателей в постоянных клиентов,</span>
+                                <span class="subtitle-text">а их предоплаты - в оборотный капитал</span>
+                                <span class="subtitle-text">для вашего роста.</span>
+                            </p>
+                            
+                            <!-- Animated CTA button -->
+                            <div class="hero-cta">
+                                <button class="hero-button">
+                                    <span class="button-text">Попробовать бесплатно</span>
+                                    <span class="button-icon">
+                                        <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.49a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="how-it-works" class="section fade-in" role="region" aria-labelledby="how-it-works-title">
+                    <div class="container mx-auto px-6">
+                        <h2 id="how-it-works-title" class="section_title">Как работает программа лояльности</h2>
+                        <p class="section_subtitle">Минималистично. Понятно. Быстро.</p>
+
+                        <div id="how-stepper" class="stepper">
+                            <div class="steps-progress">
+                                <div class="steps-progress-fill"></div>
+                            </div>
+                            <div class="steps-grid">
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-title">Подключение</div>
+                                    <div class="step-desc">Регистрируете бизнес и задаете правила начисления бонусов.</div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-title">Клиенты</div>
+                                    <div class="step-desc">Клиенты устанавливают приложение, пополняют баланс и платят у вас.</div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-title">Результат</div>
+                                    <div class="step-desc">Вы получаете предоплаты и рост повторных покупок.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto hidden">
+                            <div class="modern-card card-animate p-8 text-center">
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="card-title">1. Подключение</h3>
+                                <p class="card-description">Зарегистрируйтесь в системе и настройте программу лояльности под ваш бизнес</p>
+                                <ul class="card-features">
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Быстрая регистрация за 5 минут</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Гибкие настройки бонусов</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="modern-card card-animate p-8 text-center">
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4 22h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M10 14.66V17c0 1.1.9 2 2 2s2-.9 2-2v-2.34" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18 9v5a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="card-title">2. Клиенты</h3>
+                                <p class="card-description">Ваши клиенты устанавливают приложение и пополняют баланс</p>
+                                <ul class="card-features">
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Простая установка приложения</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Мгновенное пополнение баланса</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="modern-card card-animate p-8 text-center">
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4 22h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M10 14.66V17c0 1.1.9 2 2 2s2-.9 2-2v-2.34" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18 9v5a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="card-title">3. Результат</h3>
+                                <p class="card-description">Получайте предоплаты и увеличивайте продажи с помощью программ лояльности</p>
+                                <ul class="card-features">
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Предоплаты на ваш счет</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Рост продаж на 25-40%</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="business-benefits" class="section fade-in" role="region" aria-labelledby="benefits-title">
+                    <div class="container mx-auto px-6">
+                        <h2 id="benefits-title" class="section_title">Преимущества для вашего бизнеса</h2>
+                        <p class="section_subtitle">Ключевые возможности, которые помогут вашему бизнесу расти</p>
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <!-- Карточка 1 -->
+                            <div class="modern-card card-animate p-8 text-center">
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4 22h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M10 14.66V17c0 1.1.9 2 2 2s2-.9 2-2v-2.34" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18 9v5a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="card-title">Увеличение продаж</h3>
+                                <p class="card-description">Повышайте средний чек и частоту покупок с помощью программ лояльности</p>
+                                <ul class="card-features">
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Рост повторных покупок до 35%</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Увеличение среднего чека до 28%</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Улучшение NPS до 40 пунктов</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Карточка 2 -->
+                            <div class="modern-card card-animate p-8 text-center">
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="card-title">Оборотный капитал</h3>
+                                <p class="card-description">Получайте предоплаты от лояльных клиентов для развития бизнеса</p>
+                                <ul class="card-features">
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Мгновенные выплаты на ваш счет</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Улучшение cash-flow бизнеса</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Возможность инвестировать в развитие</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Карточка 3 -->
+                            <div class="modern-card card-animate p-8 text-center">
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M208,80H172V56a24,24,0,0,0-24-24H108A24,24,0,0,0,84,56V80H48A16,16,0,0,0,32,96v96a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM100,56a8,8,0,0,1,8-8h40a8,8,0,0,1,8,8V80H100ZM208,192H48V96H208v96Z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="card-title">Безопасность</h3>
+                                <p class="card-description">Надежная система защиты данных и транзакций ваших клиентов</p>
+                                <ul class="card-features">
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>256-битное SSL-шифрование</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Сертификация PCI DSS</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Регулярные аудиты безопасности</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="customer-benefits" class="section bg-gray-50 fade-in" role="region"
+                    aria-labelledby="customer-benefits-title">
+                    <div class="container mx-auto px-6">
+                        <h2 id="customer-benefits-title" class="section_title">Возможности для ваших клиентов</h2>
+                        <p class="section_subtitle">Что получат клиенты, участвуя в вашей программе лояльности</p>
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <!-- Карточка 1 -->
+                            <div class="modern-card card-animate p-8 text-center">
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="card-title">Бонусы и скидки</h3>
+                                <p class="card-description">Клиенты получают вознаграждения за покупки и лояльность</p>
+                                <ul class="card-features">
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Накопительные бонусы</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Персональные промокоды</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Эксклюзивные предложения</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Карточка 2 -->
+                            <div class="modern-card card-animate p-8 text-center">
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="card-title">Персональные предложения</h3>
+                                <p class="card-description">Индивидуальные скидки и акции на основе предпочтений</p>
+                                <ul class="card-features">
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Анализ покупательского поведения</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Персональные рекомендации</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Специальные предложения "только для вас"</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Карточка 3 -->
+                            <div class="modern-card card-animate p-8 text-center">
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4 22h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M10 14.66V17c0 1.1.9 2 2 2s2-.9 2-2v-2.34" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18 9v5a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </div>
+                                <h3 class="card-title">Гибкие условия</h3>
+                                <p class="card-description">Возможность выбрать наиболее выгодный вариант участия</p>
+                                <ul class="card-features">
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Несколько программ на выбор</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Возможность комбинировать условия</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Персональный подход к каждому клиенту</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+
+                
+                <!-- Тарифы -->
+                <section id="pricing" class="section bg-gradient-to-br from-amber-50 via-white to-orange-50 fade-in" role="region" aria-labelledby="pricing-title">
+                    <div class="container mx-auto px-6">
+                        <div class="text-center mb-16">
+                            <h2 id="pricing-title" class="section_title mb-6">Тарифы</h2>
+                            <p class="section_subtitle text-xl max-w-3xl mx-auto">Выберите подходящий тариф для вашего бизнеса. Начните с малого и масштабируйтесь по мере роста.</p>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                            <div class="modern-card card-animate p-8 text-center">
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="card-title">Старт</h3>
+                                <p class="text-4xl font-bold mb-6 text-[var(--primary-color)]">₽5,900<span
+                                        class="text-lg font-normal text-[var(--text-secondary)]">/месяц</span></p>
+                                <ul class="card-features mb-12">
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>До 100 клиентов</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Базовая аналитика</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Поддержка по email</span>
+                                    </li>
+                                </ul>
+                                
+                                <div style="height: 2rem;"></div>
+                                
+                                <a href="#" class="button_primary text-lg w-full" style="margin-top: 2.5rem;">Выбрать тариф</a>
+                            </div>
+                            
+                            <div class="modern-card card-animate p-8 text-center">
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="card-title">Про</h3>
+                                <p class="text-4xl font-bold mb-6 text-[var(--primary-color)]">₽12,900<span
+                                        class="text-lg font-normal text-[var(--text-secondary)]">/месяц</span></p>
+                                <ul class="card-features mb-12">
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>До 500 клиентов</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Расширенная аналитика</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Приоритетная поддержка</span>
+                                    </li>
+                                </ul>
+                                
+                                <div style="height: 2rem;"></div>
+                                
+                                <a href="#" class="button_primary text-lg w-full" style="margin-top: 2.5rem;">Выбрать тариф</a>
+                            </div>
+                            
+                            <div class="modern-card card-animate p-8 text-center">
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M208,80H172V56a24,24,0,0,0-24-24H108A24,24,0,0,0,84,56V80H48A16,16,0,0,0,32,96v96a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM100,56a8,8,0,0,1,8-8h40a8,8,0,0,1,8,8V80H100ZM208,192H48V96H208v96Z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="card-title">Премиум</h3>
+                                <p class="text-4xl font-bold mb-6 text-[var(--primary-color)]">₽24,900<span
+                                        class="text-lg font-normal text-[var(--text-secondary)]">/месяц</span></p>
+                                <ul class="card-features mb-12">
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Неограниченное число клиентов</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Полная аналитика и отчеты</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Персональный менеджер</span>
+                                    </li>
+                                </ul>
+                                
+                                <div style="height: 2rem;"></div>
+                                
+                                <a href="#" class="button_primary text-lg w-full" style="margin-top: 2.5rem;">Выбрать тариф</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Call to Action -->
+                <section class="section fade-in">
+                    <div class="container mx-auto px-6">
+                        <div class="cta-section">
+                            <div class="cta-pattern"></div>
+                            <div class="cta-content">
+                                <h2 class="text-3xl md:text-4xl font-bold mb-6">Готовы увеличить продажи и получить оборотный капитал?</h2>
+                                <p class="text-xl mb-8 max-w-2xl mx-auto">Подключите программу лояльности Mangus и начните получать предоплаты от клиентов уже сегодня</p>
+                                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                    <a href="https://forms.gle/ufWAaHkbmJfx8y9e6" target="_blank" class="button_white text-lg">Попробовать бесплатно</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+
+
+
+            </main>
+            <footer class="bg-gray-800 text-white py-12" role="contentinfo">
+                <div class="container mx-auto px-6">
+                    <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto text-center">
+                        <div>
+                            <h3 class="text-lg font-bold mb-4">Mangus</h3>
+                            <p class="text-gray-400">Превратите клиентов в капитал.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold mb-4">Юридическая информация</h3>
+                            <ul class="space-y-2">
+                                <li><a class="text-gray-400 hover:text-white" href="#">Политика конфиденциальности</a>
+                                </li>
+                                <li><a class="text-gray-400 hover:text-white" href="#">Условия использования</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-12 border-t border-gray-700 pt-8 flex flex-col sm:flex-row justify-between items-center">
+                        <p class="text-gray-400">© 2025 Mangus. Все права защищены.</p>
+                        <div class="flex gap-4 mt-4 sm:mt-0">
+                            <a class="text-gray-400 hover:text-white" href="#" aria-label="Twitter"><svg
+                                    fill="currentColor" height="24" viewBox="0 0 256 256" width="24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z">
+                                    </path>
+                                </svg></a>
+                            <a class="text-gray-400 hover:text-white" href="#" aria-label="Instagram"><svg
+                                    fill="currentColor" height="24" viewBox="0 0 256 256" width="24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z">
+                                    </path>
+                                </svg></a>
+                            <a class="text-gray-400 hover:text-white" href="#" aria-label="Facebook"><svg
+                                    fill="currentColor" height="24" viewBox="0 0 256 256" width="24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M128,24A104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z">
+                                    </path>
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.remove('translate-x-full');
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                mobileMenu.classList.add('translate-x-full');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+            }
+        });
+
+        // Fade-in animation on scroll
+        document.querySelectorAll('.fade-in').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(30px) scale(0.98)';
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUpScale 1s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            observer.observe(section);
+        });
+
+        // Animate cards with stagger
+        document.querySelectorAll('.card-animate').forEach((card, i) => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(40px) scale(0.96)';
+            card.style.animationDelay = (0.2 + i * 0.15) + 's';
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'cardFadeIn 0.8s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            observer.observe(card);
+        });
+        
+        // Special animation for pricing cards
+        document.querySelectorAll('#pricing .modern-card').forEach((card, i) => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(60px) scale(0.9)';
+            card.style.animationDelay = (0.3 + i * 0.2) + 's';
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0) scale(1)';
+                        }, entry.target.style.animationDelay * 1000);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            observer.observe(card);
+        });
+
+        // Animate section titles
+        document.querySelectorAll('.section_title').forEach((title, i) => {
+            title.style.opacity = 0;
+            title.style.transform = 'translateX(-40px)';
+        });
+
+        // Enhanced hero section animations
+        const heroSection = document.getElementById('home');
+        if (heroSection) {
+            // Parallax effect for floating shapes
+            window.addEventListener('scroll', function () {
+                const scrolled = window.pageYOffset;
+                const shapes = document.querySelectorAll('.shape');
+                
+                shapes.forEach((shape, index) => {
+                    const speed = 0.5 + (index * 0.1);
+                    const yPos = -(scrolled * speed);
+                    shape.style.transform = `translateY(${yPos}px)`;
+                });
+            });
+            
+            // Mouse move effect removed - no more 3D perspective
+            
+                         // Intersection Observer for hero animations
+             const heroObserver = new IntersectionObserver((entries) => {
+                 entries.forEach(entry => {
+                     if (entry.isIntersecting && !entry.target.classList.contains('hero-animated')) {
+                         // Mark as animated to prevent re-animation
+                         entry.target.classList.add('hero-animated');
+                         
+                         // Trigger additional animations
+                         entry.target.classList.add('hero-visible');
+                         
+                         // Animate floating shapes with stagger
+                         const shapes = entry.target.querySelectorAll('.shape');
+                         shapes.forEach((shape, index) => {
+                             setTimeout(() => {
+                                 shape.style.animationPlayState = 'running';
+                             }, index * 200);
+                         });
+                         
+                         // Animate particles with stagger
+                         const particles = entry.target.querySelectorAll('.particle');
+                         particles.forEach((particle, index) => {
+                             setTimeout(() => {
+                                 particle.style.animationPlayState = 'running';
+                             }, index * 100);
+                         });
+                         
+                         // Ensure highlight animation runs
+                         const highlightElement = entry.target.querySelector('.title-line.highlight');
+                         if (highlightElement) {
+                             setTimeout(() => {
+                                 const highlightAfter = highlightElement.querySelector('::after') || 
+                                                       highlightElement.nextElementSibling;
+                                 if (highlightAfter) {
+                                     highlightAfter.style.width = '100%';
+                                 }
+                             }, 1500);
+                         }
+                     }
+                 });
+             }, { threshold: 0.1 });
+             
+             heroObserver.observe(heroSection);
+            
+            // Add click effect for shapes
+            const shapes = heroSection.querySelectorAll('.shape');
+            shapes.forEach(shape => {
+                shape.addEventListener('click', function() {
+                    this.style.animation = 'none';
+                    this.style.transform = 'scale(1.5) rotate(360deg)';
+                    this.style.opacity = '0.8';
+                    
+                    setTimeout(() => {
+                        this.style.animation = '';
+                        this.style.transform = '';
+                        this.style.opacity = '0.1';
+                    }, 500);
+                });
+            });
+        }
+        // Animate minimal stepper when visible with looping animation
+        (function() {
+            const stepper = document.getElementById('how-stepper');
+            if (!stepper) return;
+            
+            let currentStep = 0;
+            let animationRunning = false;
+            let animationTimeout;
+            
+            const showStep = (stepNumber) => {
+                // Скрываем все шаги
+                stepper.classList.remove('animate', 'animate-step-2', 'animate-step-3');
+                
+                // Показываем нужный шаг
+                if (stepNumber >= 1) stepper.classList.add('animate');
+                if (stepNumber >= 2) stepper.classList.add('animate-step-2');
+                if (stepNumber >= 3) stepper.classList.add('animate-step-3');
+            };
+            
+            const startAnimation = () => {
+                if (animationRunning) return;
+                animationRunning = true;
+                currentStep = 0;
+                
+                const animateStep = () => {
+                    if (!animationRunning) return;
+                    
+                    currentStep++;
+                    showStep(currentStep);
+                    
+                    if (currentStep < 3) {
+                        // Задержка 3 секунды между шагами
+                        animationTimeout = setTimeout(animateStep, 3000);
+                    } else {
+                        // После последнего шага ждем 2 секунды и начинаем заново
+                        animationTimeout = setTimeout(() => {
+                            if (animationRunning) {
+                                startAnimation();
+                            }
+                        }, 2000);
+                    }
+                };
+                
+                // Начинаем с первого шага
+                animationTimeout = setTimeout(animateStep, 1000);
+            };
+            
+            const stopAnimation = () => {
+                animationRunning = false;
+                currentStep = 0;
+                showStep(0);
+                if (animationTimeout) {
+                    clearTimeout(animationTimeout);
+                }
+            };
+            
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        startAnimation();
+                    } else {
+                        stopAnimation();
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            // Анимация зависит от скролла - перезапускается при каждом появлении
+            obs.observe(stepper);
+        })();
+
+    </script>
+</body>
+
+</html>

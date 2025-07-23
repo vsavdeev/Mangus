@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Возможности для клиентов | Mangus</title>
+    <link href="logo.png" rel="icon" type="image/png" />
+    <link href="logo.png" rel="shortcut icon" type="image/png" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-color: #f59e0b;
+            --secondary-color: #f0f2f4;
+            --background-color: #ffffff;
+            --text-primary: #111418;
+            --text-secondary: #637488;
+            --accent-color: #fffbeb;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+        }
+        .button_primary {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: bold;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-duration: 150ms;
+            outline: none;
+            box-shadow: none;
+            border: none;
+            transition: transform 0.2s;
+        }
+
+        .button_primary:hover {
+            background-color: #f59e0b;
+            animation: bounceBtn 0.4s;
+        }
+
+        .button_primary:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+        @keyframes bounceBtn {
+            0% { transform: scale(1);}
+            30% { transform: scale(1.08);}
+            60% { transform: scale(0.96);}
+            100% { transform: scale(1);}
+        }
+        .button_secondary {
+            background-color: var(--secondary-color);
+            color: var(--text-primary);
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: bold;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-duration: 150ms;
+            outline: none;
+            box-shadow: none;
+            border: none;
+        }
+
+        .button_secondary:hover {
+            background-color: #d1d5db;
+        }
+
+        .button_secondary:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+        
+        .button_white {
+            background-color: white !important;
+            color: var(--primary-color) !important;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: bold;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-duration: 150ms;
+            outline: none;
+            box-shadow: none;
+            border: none;
+            transition: transform 0.2s;
+        }
+        
+        .button_white:hover {
+            background-color: #f3f4f6 !important;
+            color: #d97706 !important;
+            animation: bounceBtn 0.4s;
+        }
+        .section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        .section_title {
+            @apply text-4xl font-bold text-[var(--text-primary)] mb-4 text-center;
+            opacity: 0;
+            transform: translateX(-40px);
+            animation: slideInTitle 0.8s forwards;
+        }
+        
+        @keyframes slideInTitle {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .section_subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            text-align: center;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Animation styles */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            animation: fadeInUpScale 1s forwards;
+        }
+        
+        @keyframes fadeInUpScale {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* Card animation */
+        .card-animate {
+            opacity: 0;
+            transform: translateY(40px) scale(0.96);
+            animation: cardFadeIn 0.8s forwards;
+        }
+        
+        @keyframes cardFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* Modern card styles */
+        .modern-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            border: 1px solid rgba(241, 245, 249, 0.8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            backdrop-filter: blur(10px);
+            max-width: 1000px;
+            margin: 0 auto 3rem auto;
+            padding: 2rem;
+        }
+        /* Modern card styles */
+        .modern-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            border: 1px solid rgba(241, 245, 249, 0.8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            backdrop-filter: blur(10px);
+            max-width: 1000px;
+            margin: 0 auto 3rem auto;
+            padding: 2rem;
+        }
+        
+        .modern-card:last-child {
+            margin-bottom: 0;
+        }
+        
+        .modern-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        
+        .modern-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), #f97316);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modern-card:hover::before {
+            opacity: 1;
+        }
+        
+        /* Card content layout */
+        .card-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .card-image-section {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .modern-card:hover .card-image-section img {
+            transform: scale(1.05);
+        }
+        
+        .card-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #fef3c7 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .modern-card:hover .card-icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #f97316 100%);
+        }
+        
+        .modern-card:hover .card-icon-wrapper svg {
+            color: white;
+        }
+        
+        .card-icon-wrapper svg {
+            width: 40px;
+            height: 40px;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, #374151 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+        
+        .card-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .card-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .card-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+        
+        .card-feature:hover {
+            background: rgba(245, 158, 11, 0.05);
+            transform: translateX(8px);
+        }
+        
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        
+        .feature-icon svg {
+            width: 12px;
+            height: 12px;
+            color: white;
+        }
+        
+        .card-feature:hover .feature-icon {
+            transform: scale(1.1);
+            background: var(--primary-color);
+        }
+        
+        /* Step animation */
+        .step-item {
+            @apply flex items-center gap-4 p-4 rounded-lg bg-white border border-gray-100 shadow-sm transition-all hover:shadow-md;
+        }
+        .step-number {
+            @apply bg-[var(--primary-color)] text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold;
+        }
+        /* CTA section */
+        .cta-section {
+            background: linear-gradient(to bottom right, var(--primary-color), #f97316);
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Mobile menu animations */
+        #mobile-menu {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: white !important;
+            background: white !important;
+        }
+        
+        #mobile-menu.translate-x-full {
+            transform: translateX(100%);
+        }
+        
+        /* Force opaque background for mobile menu and its contents */
+        #mobile-menu,
+        #mobile-menu * {
+            background-color: white !important;
+            background: white !important;
+        }
+        
+        #mobile-menu nav,
+        #mobile-menu .flex-1 {
+            background-color: white !important;
+            background: white !important;
+        }
+        
+        /* Beautiful mobile menu button */
+        #menu-toggle {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #menu-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 0.5rem;
+        }
+        
+        #menu-toggle:hover::before {
+            opacity: 0.1;
+        }
+        
+        #menu-toggle:active {
+            transform: scale(0.95);
+        }
+        
+        /* Menu button line animations */
+        #menu-toggle span {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #menu-toggle:hover span:nth-child(1) {
+            transform: rotate(45deg) translateY(6px);
+        }
+        
+        #menu-toggle:hover span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        
+        #menu-toggle:hover span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-6px);
+        }
+    </style>
+</head>
+
+<body class="bg-[var(--background-color)] text-[var(--text-primary)]">
+    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header class="bg-[var(--background-color)]/80 backdrop-blur-sm sticky top-0 z-50" role="banner">
+                <div class="container mx-auto flex items-center justify-between whitespace-nowrap px-6 py-4">
+                    <div class="flex items-center gap-3 text-[var(--text-primary)]">
+                        <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                            <div class="size-8 text-[var(--primary-color)]">
+                                <img src="logo.png" alt="Mangus Logo" class="w-8 h-8 object-contain">
+                            </div>
+                            <h2 class="text-[var(--text-primary)] text-xl font-bold leading-tight tracking-[-0.015em]">
+                                Mangus</h2>
+                        </a>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-8" role="navigation" aria-label="Main navigation">
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="index.html">Главная</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="how-it-works.html">Как это работает</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="business-benefits.html">Преимущества для бизнеса</a>
+                        <a class="text-[var(--primary-color)] font-medium text-base leading-normal"
+                            href="customer-benefits.html">Возможности для клиентов</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="pricing.html">Тарифы</a>
+                    </nav>
+                    <div class="flex items-center gap-4">
+                        <!-- <a class="button_secondary" href="#">Вход</a> -->
+                        <!-- <a class="button_primary hidden sm:inline-flex" href="#">Регистрация</a> -->
+                        
+                        <!-- Mobile menu button -->
+                        <div class="md:hidden">
+                            <button class="relative group p-2 rounded-lg hover:bg-[var(--primary-color)]/10 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]/20" aria-label="Toggle menu" id="menu-toggle">
+                                <div class="flex flex-col items-center justify-center w-6 h-6">
+                                    <span class="w-5 h-0.5 bg-[var(--primary-color)] rounded-full transition-all duration-200 group-hover:bg-[var(--primary-color)] transform group-hover:rotate-45 group-hover:translate-y-1.5"></span>
+                                    <span class="w-5 h-0.5 bg-[var(--primary-color)] rounded-full transition-all duration-200 group-hover:bg-[var(--primary-color)] opacity-100 group-hover:opacity-0 mt-1"></span>
+                                    <span class="w-5 h-0.5 bg-[var(--primary-color)] rounded-full transition-all duration-200 group-hover:bg-[var(--primary-color)] transform group-hover:-rotate-45 group-hover:-translate-y-1.5 mt-1"></span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                        <!-- <a class="button_secondary" href="#">Вход</a> -->
+                        <!-- <a class="button_primary hidden sm:inline-flex" href="#">Регистрация</a> -->
+                    </div>
+                </div>
+                <div id="mobile-menu" class="hidden md:hidden fixed top-0 right-0 h-full w-80 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-50" style="background-color: white !important; background: white !important;">
+                    <div class="flex flex-col h-full" style="background-color: white !important; background: white !important;">
+                        <!-- Header with close button -->
+                        <div class="flex items-center justify-between p-6 border-b border-gray-200" style="background-color: white !important; background: white !important;">
+                            <h3 class="text-lg font-bold text-[var(--text-primary)]">Меню</h3>
+                            <button class="text-gray-500 hover:text-[var(--text-primary)] transition-colors" id="close-menu">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Navigation links -->
+                        <nav class="flex-1 px-6 py-8" aria-label="Mobile navigation" style="background-color: white !important; background: white !important;">
+                            <div class="space-y-6" style="background-color: white !important; background: white !important;">
+                                <a class="flex items-center gap-3 text-lg font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all duration-200 hover:translate-x-2" href="index.html">
+                                    <span class="w-2 h-2 bg-[var(--primary-color)] rounded-full"></span>
+                                    Главная
+                                </a>
+                                <a class="flex items-center gap-3 text-lg font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all duration-200 hover:translate-x-2" href="how-it-works.html">
+                                    <span class="w-2 h-2 bg-[var(--primary-color)] rounded-full"></span>
+                                    Как это работает
+                                </a>
+                                <a class="flex items-center gap-3 text-lg font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all duration-200 hover:translate-x-2" href="business-benefits.html">
+                                    <span class="w-2 h-2 bg-[var(--primary-color)] rounded-full"></span>
+                                    Преимущества для бизнеса
+                                </a>
+                                <a class="flex items-center gap-3 text-lg font-medium text-[var(--primary-color)] transition-all duration-200 hover:translate-x-2" href="customer-benefits.html">
+                                    <span class="w-2 h-2 bg-[var(--primary-color)] rounded-full"></span>
+                                    Возможности для клиентов
+                                </a>
+                                <a class="flex items-center gap-3 text-lg font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all duration-200 hover:translate-x-2" href="pricing.html">
+                                    <span class="w-2 h-2 bg-[var(--primary-color)] rounded-full"></span>
+                                    Тарифы
+                                </a>
+                            </div>
+                        </nav>
+                        
+                        <!-- Footer -->
+                        <div class="p-6 border-t border-gray-200" style="background-color: white !important; background: white !important;">
+                            <div class="text-center" style="background-color: white !important; background: white !important;">
+                                <p class="text-sm text-gray-500 mb-2">Mangus</p>
+                                <p class="text-xs text-gray-400">Превратите клиентов в капитал</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <section id="customer-benefits" class="section fade-in" role="region" aria-labelledby="customer-benefits-title">
+                    <div class="container mx-auto px-6">
+                        <h2 id="customer-benefits-title" class="section_title">Возможности для клиентов</h2>
+                        <p class="section_subtitle">Узнайте, как Mangus делает покупки удобнее и выгоднее для ваших клиентов</p>
+                        
+                        <!-- Карточка 1 -->
+                        <div class="modern-card card-animate">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-section">
+                                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
+                                         alt="Все карты лояльности всегда под рукой">
+                                </div>
+                                
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM76,88a12,12,0,1,1-12-12A12,12,0,0,1,76,88Zm36,0a12,12,0,1,1-12-12A12,12,0,0,1,112,88Zm36,0a12,12,0,1,1-12-12A12,12,0,0,1,148,88Z"></path>
+                                    </svg>
+                                </div>
+                                
+                                <h3 class="card-title">Все карты лояльности всегда под рукой</h3>
+                                <p class="card-description">Ваши клиенты больше не будут терять пластиковые карты или забывать о накопленных бонусах. Все их карты лояльности хранятся в одном приложении и доступны в любой момент.</p>
+                                
+                                <ul class="card-features">
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Добавление новой карты занимает всего несколько секунд</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Просто отсканируйте QR-код или найдите магазин через удобный поиск</span>
+                                    </li>
+                                    <li class="card-feature">
+                                        <span class="feature-icon">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Все бонусы и скидки всегда перед глазами</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Карточка 2 -->
+                        <div class="modern-card card-animate">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-section">
+                                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
+                                         alt="Молниеносная оплата с бонусами">
+                                </div>
+                                
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4 22h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M10 14.66V17c0 1.1.9 2 2 2s2-.9 2-2v-2.34" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18 9v5a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                
+                                <h3 class="card-title">Молниеносная оплата с бонусами</h3>
+                                <p class="card-description">Мы сделали процесс оплаты максимально простым. Клиенты экономят время на кассе, а вы получаете довольных гостей.</p>
+                                
+                                <div class="space-y-4 mb-6">
+                                    <div class="step-item">
+                                        <div class="step-number">1</div>
+                                        <div>Пополнение баланса за секунды</div>
+                                    </div>
+                                    <div class="step-item">
+                                        <div class="step-number">2</div>
+                                        <div>Оплата покупки одним касанием через QR-код</div>
+                                    </div>
+                                    <div class="step-item">
+                                        <div class="step-number">3</div>
+                                        <div>Автоматическое применение всех доступных бонусов</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                                    <div class="flex items-start gap-3">
+                                        <svg fill="currentColor" class="text-blue-500 mt-1 flex-shrink-0" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path>
+                                        </svg>
+                                        <div class="text-blue-800">
+                                            <strong>Результат:</strong> Среднее время оплаты сокращается на 70% по сравнению с традиционными картами лояльности
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Карточка 3 -->
+                        <div class="modern-card card-animate">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-section">
+                                    <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
+                                         alt="Полная защита средств и данных">
+                                </div>
+                                
+                                <div class="card-icon-wrapper">
+                                    <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M208,80H172V56a24,24,0,0,0-24-24H108A24,24,0,0,0,84,56V80H48A16,16,0,0,0,32,96v96a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM100,56a8,8,0,0,1,8-8h40a8,8,0,0,1,8,8V80H100ZM208,192H48V96H208v96Z"></path>
+                                    </svg>
+                                </div>
+                                
+                                <h3 class="card-title">Полная защита средств и данных</h3>
+                                <p class="card-description">Мы используем те же стандарты безопасности, что и крупнейшие российские банки. Ваши клиенты могут быть уверены в безопасности своих средств.</p>
+                                
+                                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <svg fill="currentColor" class="text-green-500" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
+                                            </svg>
+                                            <span class="font-bold">Защита платежей</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600">Все платежи защищены по современным стандартам безопасности</p>
+                                    </div>
+                                    
+                                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <svg fill="currentColor" class="text-green-500" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
+                                            </svg>
+                                            <span class="font-bold">Шифрование данных</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600">Данные карт надежно зашифрованы и хранятся в России</p>
+                                    </div>
+                                    
+                                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <svg fill="currentColor" class="text-green-500" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
+                                            </svg>
+                                            <span class="font-bold">Контроль операций</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600">Вы и клиент сразу видите любое списание средств</p>
+                                    </div>
+                                    
+                                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <svg fill="currentColor" class="text-green-500" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path>
+                                            </svg>
+                                            <span class="font-bold">Соответствие законам</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600">Полное соответствие требованиям 152 ФЗ и ЦБ РФ</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Call to Action -->
+                <section class="section fade-in">
+                    <div class="container mx-auto px-6">
+                        <div class="cta-section">
+                            <div class="cta-pattern"></div>
+                            <div class="cta-content">
+                                <h2 class="text-3xl md:text-4xl font-bold mb-6">Готовы увеличить продажи и получить оборотный капитал?</h2>
+                                <p class="text-xl mb-8 max-w-2xl mx-auto">Подключите программу лояльности Mangus и начните получать предоплаты от клиентов уже сегодня</p>
+                                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                    <a href="https://forms.gle/ufWAaHkbmJfx8y9e6" target="_blank" class="button_white text-lg">Попробовать бесплатно</a>                         
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer class="bg-gray-800 text-white py-12" role="contentinfo">
+                <div class="container mx-auto px-6">
+                    <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto text-center">
+                        <div>
+                            <h3 class="text-lg font-bold mb-4">Mangus</h3>
+                            <p class="text-gray-400">Превратите клиентов в капитал.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold mb-4">Юридическая информация</h3>
+                            <ul class="space-y-2">
+                                <li><a class="text-gray-400 hover:text-white" href="#">Политика конфиденциальности</a>
+                                </li>
+                                <li><a class="text-gray-400 hover:text-white" href="#">Условия использования</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-12 border-t border-gray-700 pt-8 flex flex-col sm:flex-row justify-between items-center">
+                        <p class="text-gray-400">© 2025 Mangus. Все права защищены.</p>
+                        <div class="flex gap-4 mt-4 sm:mt-0">
+                            <a class="text-gray-400 hover:text-white" href="#" aria-label="Twitter"><svg
+                                    fill="currentColor" height="24" viewBox="0 0 256 256" width="24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z">
+                                    </path>
+                                </svg></a>
+                            <a class="text-gray-400 hover:text-white" href="#" aria-label="Instagram"><svg
+                                    fill="currentColor" height="24" viewBox="0 0 256 256" width="24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z">
+                                    </path>
+                                </svg></a>
+                            <a class="text-gray-400 hover:text-white" href="#" aria-label="Facebook"><svg
+                                    fill="currentColor" height="24" viewBox="0 0 256 256" width="24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M128,24A104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z">
+                                    </path>
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.remove('translate-x-full');
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                mobileMenu.classList.add('translate-x-full');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+            }
+        });
+
+        // Fade-in animation on scroll
+        document.querySelectorAll('.fade-in').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(30px) scale(0.98)';
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUpScale 1s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            observer.observe(section);
+        });
+
+        // Animate cards with stagger
+        document.querySelectorAll('.card-animate').forEach((card, i) => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(40px) scale(0.96)';
+            card.style.animationDelay = (0.2 + i * 0.15) + 's';
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                        entry.target.classList.add('animated');
+                        entry.target.style.animation = 'cardFadeIn 0.8s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            observer.observe(card);
+        });
+
+        // Animate section titles
+        document.querySelectorAll('.section_title').forEach((title, i) => {
+            title.style.opacity = 0;
+            title.style.transform = 'translateX(-40px)';
+            title.style.animationDelay = (0.1 + i * 0.1) + 's';
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                        entry.target.classList.add('animated');
+                        entry.target.style.animation = 'slideInTitle 0.8s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            observer.observe(title);
+        });
+    </script>
+</body>
+
+</html>
