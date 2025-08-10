@@ -54,21 +54,10 @@
         }
 
         @keyframes bounceBtn {
-            0% {
-                transform: scale(1);
-            }
-
-            30% {
-                transform: scale(1.08);
-            }
-
-            60% {
-                transform: scale(0.96);
-            }
-
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(1);}
+            30% { transform: scale(1.08);}
+            60% { transform: scale(0.96);}
+            100% { transform: scale(1);}
         }
 
         .button_secondary {
@@ -266,6 +255,29 @@
                 transform: translateY(0) scale(1);
             }
         }
+        
+        /* CTA section */
+        .cta-section {
+            background: linear-gradient(to bottom right, var(--primary-color), #f97316);
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 10;
+        }
     </style>
 </head>
 
@@ -291,9 +303,9 @@
                         <a class="text-[var(--primary-color)] font-medium text-base leading-normal"
                             href="how-it-works.html">Как это работает</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
-                            href="index.html#business-benefits">Преимущества для бизнеса</a>
+                            href="business-benefits.html">Преимущества для бизнеса</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
-                            href="index.html#customer-benefits">Возможности для клиентов</a>
+                            href="customer-benefits.html">Возможности для клиентов</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
                             href="index.html#pricing">Тарифы</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
@@ -321,9 +333,9 @@
                         <a class="text-[var(--primary-color)] font-medium text-base leading-normal"
                             href="how-it-works.html">Как это работает</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
-                            href="index.html#business-benefits">Преимущества для бизнеса</a>
+                            href="business-benefits.html">Преимущества для бизнеса</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
-                            href="index.html#customer-benefits">Возможности для клиентов</a>
+                            href="customer-benefits.html">Возможности для клиентов</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
                             href="index.html#pricing">Тарифы</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
@@ -417,10 +429,21 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="text-center mt-16">
-                            <a href="index.html#contact"
-                                class="button_primary inline-block px-10 py-4 text-lg">Попробовать бесплатно</a>
+                    </div>
+                </section>
+                
+                <!-- Call to Action -->
+                <section class="section fade-in">
+                    <div class="container mx-auto px-6">
+                        <div class="cta-section">
+                            <div class="cta-pattern"></div>
+                            <div class="cta-content">
+                                <h2 class="text-3xl md:text-4xl font-bold mb-6">Готовы увеличить продажи и получить оборотный капитал?</h2>
+                                <p class="text-xl mb-8 max-w-2xl mx-auto">Подключите программу лояльности Mangus и начните получать предоплаты от клиентов уже сегодня</p>
+                                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                    <a href="#" class="button_primary inline-block bg-white text-[var(--primary-color)] hover:bg-gray-100 hover:text-amber-700 text-lg">Зарегистрироваться</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -514,6 +537,7 @@
         document.querySelectorAll('.card-animate').forEach((card, i) => {
             card.style.opacity = 0;
             card.style.transform = 'translateY(40px) scale(0.96)';
+            card.style.animationDelay = (0.2 + i * 0.15) + 's';
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {

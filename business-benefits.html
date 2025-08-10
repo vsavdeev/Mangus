@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Преимущества для бизнеса | Mangus</title>
+    <link href="https://mangoloyalty.com/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-color: #f59e0b;
+            --secondary-color: #f0f2f4;
+            --background-color: #ffffff;
+            --text-primary: #111418;
+            --text-secondary: #637488;
+            --accent-color: #fffbeb;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+        }
+        .button_primary {
+            @apply bg-[var(--primary-color)] text-white py-3 px-6 rounded-md hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50 font-bold transition-colors;
+            transition: transform 0.2s;
+        }
+        .button_primary:hover {
+            animation: bounceBtn 0.4s;
+        }
+        @keyframes bounceBtn {
+            0% { transform: scale(1);}
+            30% { transform: scale(1.08);}
+            60% { transform: scale(0.96);}
+            100% { transform: scale(1);}
+        }
+        .button_secondary {
+            @apply bg-[var(--secondary-color)] text-[var(--text-primary)] py-3 px-6 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50 font-bold transition-colors;
+        }
+        .section {
+            @apply py-20;
+        }
+        .section_title {
+            @apply text-4xl font-bold text-[var(--text-primary)] mb-4 text-center;
+            opacity: 0;
+            transform: translateX(-40px);
+            animation: slideInTitle 0.8s forwards;
+        }
+        @keyframes slideInTitle {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .section_subtitle {
+            @apply text-lg text-[var(--text-secondary)] mb-12 text-center max-w-3xl mx-auto;
+        }
+        /* Animation styles */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            animation: fadeInUpScale 1s forwards;
+        }
+        @keyframes fadeInUpScale {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        /* Card animation */
+        .card-animate {
+            opacity: 0;
+            transform: translateY(40px) scale(0.96);
+            animation: cardFadeIn 0.8s forwards;
+        }
+        @keyframes cardFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        /* Icon pop animation */
+        .icon-pop {
+            transition: transform 0.2s;
+        }
+        .icon-pop:hover {
+            animation: iconPop 0.4s;
+        }
+        @keyframes iconPop {
+            0% { transform: scale(1);}
+            50% { transform: scale(1.2);}
+            100% { transform: scale(1);}
+        }
+        /* Infographic styles */
+        .infographic-card {
+            @apply bg-white rounded-xl shadow-lg p-8 border border-gray-100 flex flex-col md:flex-row items-center gap-8;
+        }
+        .infographic-icon {
+            @apply flex-shrink-0 bg-[var(--accent-color)] rounded-full p-6 text-[var(--primary-color)] mb-6 md:mb-0;
+        }
+        .infographic-content {
+            @apply flex-1;
+        }
+        .infographic-title {
+            @apply text-2xl font-bold mb-4;
+        }
+        .infographic-list {
+            @apply space-y-4 mb-6;
+        }
+        .infographic-item {
+            @apply flex items-start gap-3;
+        }
+        .infographic-badge {
+            @apply bg-[var(--primary-color)] text-white rounded-full p-1 flex-shrink-0 mt-1;
+        }
+        .how-it-works {
+            @apply bg-gray-50 p-6 rounded-lg mt-8;
+        }
+        .how-it-works-title {
+            @apply font-bold text-lg mb-4 flex items-center gap-2;
+        }
+        .how-it-works-steps {
+            @apply flex flex-col md:flex-row gap-4;
+        }
+        .how-it-works-step {
+            @apply flex-1 flex items-start gap-3;
+        }
+        .step-number {
+            @apply bg-[var(--primary-color)] text-white rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1;
+        }
+        /* CTA section */
+        .cta-section {
+            background: linear-gradient(to bottom right, var(--primary-color), #f97316);
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body class="bg-[var(--background-color)] text-[var(--text-primary)]">
+    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header class="bg-[var(--background-color)]/80 backdrop-blur-sm sticky top-0 z-50" role="banner">
+                <div class="container mx-auto flex items-center justify-between whitespace-nowrap px-6 py-4">
+                    <div class="flex items-center gap-3 text-[var(--text-primary)]">
+                        <div class="size-8 text-[var(--primary-color)]">
+                            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z"
+                                    fill="currentColor"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-[var(--text-primary)] text-xl font-bold leading-tight tracking-[-0.015em]">
+                            Mangus</h2>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-8" role="navigation" aria-label="Main navigation">
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="index.html">Главная</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="how-it-works.html">Как это работает</a>
+                        <a class="text-[var(--primary-color)] font-medium text-base leading-normal"
+                            href="business-benefits.html">Преимущества для бизнеса</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="customer-benefits.html">Возможности для клиентов</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="#pricing">Тарифы</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="#contact">Контакты</a>
+                    </nav>
+                    <div class="md:hidden">
+                        <button class="text-[var(--text-primary)] focus:outline-none" aria-label="Toggle menu"
+                            id="menu-toggle">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <a class="button_secondary" href="#">Вход</a>
+                        <a class="button_primary hidden sm:inline-flex" href="#">Регистрация</a>
+                    </div>
+                </div>
+                <div id="mobile-menu" class="hidden md:hidden bg-[var(--background-color)]/95 px-6 py-4">
+                    <nav class="flex flex-col gap-4" aria-label="Mobile navigation">
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="index.html">Главная</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="how-it-works.html">Как это работает</a>
+                        <a class="text-[var(--primary-color)] font-medium text-base leading-normal"
+                            href="business-benefits.html">Преимущества для бизнеса</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="customer-benefits.html">Возможности для клиентов</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="#pricing">Тарифы</a>
+                        <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
+                            href="#contact">Контакты</a>
+                    </nav>
+                </div>
+            </header>
+            <main>
+                <section id="business-benefits" class="section fade-in" role="region" aria-labelledby="benefits-title">
+                    <div class="container mx-auto px-6">
+                        <h2 id="benefits-title" class="section_title">Преимущества для вашего бизнеса</h2>
+                        <p class="section_subtitle">Ключевые возможности системы Mangus, которые помогут вашему бизнесу расти и развиваться</p>
+                        
+                        <!-- Инфографика 1 -->
+                        <div class="infographic-card card-animate mb-12">
+                            <div class="infographic-icon icon-pop">
+                                <svg fill="currentColor" height="48" viewBox="0 0 256 256" width="48" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M239.2,97.4A16.4,16.4,0,0,0,224.6,86l-59.4-4.1-22-55.5A16.4,16.4,0,0,0,128,16h0a16.4,16.4,0,0,0-15.2,10.4L90.4,82.2,31.4,86A16.5,16.5,0,0,0,16.8,97.4,16.8,16.8,0,0,0,22,115.5l45.4,38.4L53.9,207a18.5,18.5,0,0,0,7.4,17.7,16,16,0,0,0,20.1-1.4l51.1-44.5,51.1,44.5A15.9,15.9,0,0,0,203,224a17,17,0,0,0,4.1-.5,15.9,15.9,0,0,0,11.2-11.6l-13.5-53.1,45.4-38.4A16.8,16.8,0,0,0,239.2,97.4Z"></path>
+                                </svg>
+                            </div>
+                            <div class="infographic-content">
+                                <h3 class="infographic-title">1. Простая и эффективная программа лояльности</h3>
+                                <ul class="infographic-list">
+                                    <li class="infographic-item">
+                                        <span class="infographic-badge">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Вы самостоятельно устанавливаете размер бонусов и условия их начисления</span>
+                                    </li>
+                                    <li class="infographic-item">
+                                        <span class="infographic-badge">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Доступ к подробной аналитике ваших магазинов, клиентов и результатов кампаний лояльности</span>
+                                    </li>
+                                    <li class="infographic-item">
+                                        <span class="infographic-badge">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Автоматическое начисление бонусов — никакой ручной работы для вас и прозрачность для клиентов</span>
+                                    </li>
+                                </ul>
+                                <div class="how-it-works">
+                                    <h4 class="how-it-works-title">
+                                        <svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path>
+                                        </svg>
+                                        Как это работает:
+                                    </h4>
+                                    <div class="how-it-works-steps">
+                                        <div class="how-it-works-step">
+                                            <span class="step-number">1</span>
+                                            <span>Вы настраиваете программу</span>
+                                        </div>
+                                        <div class="how-it-works-step">
+                                            <span class="step-number">2</span>
+                                            <span>система собирает данные</span>
+                                        </div>
+                                        <div class="how-it-works-step">
+                                            <span class="step-number">3</span>
+                                            <span>вы получаете подробные и понятные отчеты для принятия решений</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Инфографика 2 -->
+                        <div class="infographic-card card-animate mb-12">
+                            <div class="infographic-icon icon-pop">
+                                <svg fill="currentColor" height="48" viewBox="0 0 256 256" width="48" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path>
+                                </svg>
+                            </div>
+                            <div class="infographic-content">
+                                <h3 class="infographic-title">2. Мгновенная предоплата на ваш счет</h3>
+                                <ul class="infographic-list">
+                                    <li class="infographic-item">
+                                        <span class="infographic-badge">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Деньги поступают сразу при пополнении клиентом карты</span>
+                                    </li>
+                                    <li class="infographic-item">
+                                        <span class="infographic-badge">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Вы получаете свободные средства для развития бизнеса без ожидания оплаты товаров или услуг</span>
+                                    </li>
+                                    <li class="infographic-item">
+                                        <span class="infographic-badge">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Снижение финансовых рисков и кассовых разрывов</span>
+                                    </li>
+                                </ul>
+                                <div class="how-it-works">
+                                    <h4 class="how-it-works-title">
+                                        <svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path>
+                                        </svg>
+                                        Как это работает:
+                                    </h4>
+                                    <div class="how-it-works-steps">
+                                        <div class="how-it-works-step">
+                                            <span class="step-number">1</span>
+                                            <span>Клиент пополняет баланс</span>
+                                        </div>
+                                        <div class="how-it-works-step">
+                                            <span class="step-number">2</span>
+                                            <span>средства мгновенно зачисляются на ваш счет</span>
+                                        </div>
+                                        <div class="how-it-works-step">
+                                            <span class="step-number">3</span>
+                                            <span>вы используете их для развития и ракетного роста вашего бизнеса</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Инфографика 3 -->
+                        <div class="infographic-card card-animate mb-12">
+                            <div class="infographic-icon icon-pop">
+                                <svg fill="currentColor" height="48" viewBox="0 0 256 256" width="48" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm45.09-61.66a8,8,0,0,1-11.32,11.32L128,123.31,93.66,157.66a8,8,0,0,1-11.32-11.32L116.69,112,82.34,77.66A8,8,0,0,1,93.66,66.34L128,100.69l34.34-34.35a8,8,0,0,1,11.32,11.32L139.31,112Z"></path>
+                                </svg>
+                            </div>
+                            <div class="infographic-content">
+                                <h3 class="infographic-title">3. Удобное приложение для ваших клиентов</h3>
+                                <ul class="infographic-list">
+                                    <li class="infographic-item">
+                                        <span class="infographic-badge">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Готовое решение - вам не нужно разрабатывать собственное приложение</span>
+                                    </li>
+                                    <li class="infographic-item">
+                                        <span class="infographic-badge">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Все карты лояльности в одном месте</span>
+                                    </li>
+                                    <li class="infographic-item">
+                                        <span class="infographic-badge">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Быстрая оплата через QR-код без сложных процедур</span>
+                                    </li>
+                                </ul>
+                                <div class="how-it-works">
+                                    <h4 class="how-it-works-title">
+                                        <svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path>
+                                        </svg>
+                                        Как это работает:
+                                    </h4>
+                                    <div class="how-it-works-steps">
+                                        <div class="how-it-works-step">
+                                            <span class="step-number">1</span>
+                                            <span>Клиенты устанавливают приложение</span>
+                                        </div>
+                                        <div class="how-it-works-step">
+                                            <span class="step-number">2</span>
+                                            <span>пополняют баланс и оплачивают покупки</span>
+                                        </div>
+                                        <div class="how-it-works-step">
+                                            <span class="step-number">3</span>
+                                            <span>вы сразу получаете деньги на счет своего бизнеса</span>
+                                        </div>
+                                        <div class="how-it-works-step">
+                                            <span class="step-number">4</span>
+                                            <span>клиенты получают бонусы и возвращаются, чтобы их потратить</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Инфографика 4 -->
+                        <div class="infographic-card card-animate">
+                            <div class="infographic-icon icon-pop">
+                                <svg fill="currentColor" height="48" viewBox="0 0 256 256" width="48" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M208,80H172V56a24,24,0,0,0-24-24H108A24,24,0,0,0,84,56V80H48A16,16,0,0,0,32,96v96a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM100,56a8,8,0,0,1,8-8h40a8,8,0,0,1,8,8V80H100ZM208,192H48V96H208v96Z"></path>
+                                </svg>
+                            </div>
+                            <div class="infographic-content">
+                                <h3 class="infographic-title">4. Полностью безопасные платежи</h3>
+                                <ul class="infographic-list">
+                                    <li class="infographic-item">
+                                        <span class="infographic-badge">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Сертифицированные платежные решения — соответствие стандартам ЦБ РФ и PCI DSS</span>
+                                    </li>
+                                    <li class="infographic-item">
+                                        <span class="infographic-badge">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Защита каждой транзакции — шифрование данных и контроль операций</span>
+                                    </li>
+                                    <li class="infographic-item">
+                                        <span class="infographic-badge">
+                                            <svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Соответствие требованиям 152 ФЗ</span>
+                                    </li>
+                                </ul>
+                                <div class="how-it-works">
+                                    <h4 class="how-it-works-title">
+                                        <svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path>
+                                        </svg>
+                                        Как это работает:
+                                    </h4>
+                                    <div class="how-it-works-steps">
+                                        <div class="how-it-works-step">
+                                            <span class="step-number">1</span>
+                                            <span>Мы обеспечиваем безопасность всех операций</span>
+                                        </div>
+                                        <div class="how-it-works-step">
+                                            <span class="step-number">2</span>
+                                            <span>вы и ваши клиенты защищены от мошенничества</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Call to Action -->
+                <section class="section fade-in">
+                    <div class="container mx-auto px-6">
+                        <div class="cta-section">
+                            <div class="cta-pattern"></div>
+                            <div class="cta-content">
+                                <h2 class="text-3xl md:text-4xl font-bold mb-6">Готовы увеличить продажи и получить оборотный капитал?</h2>
+                                <p class="text-xl mb-8 max-w-2xl mx-auto">Подключите программу лояльности Mangus и начните получать предоплаты от клиентов уже сегодня</p>
+                                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                    <a href="#" class="button_primary inline-block bg-white text-[var(--primary-color)] hover:bg-gray-100 hover:text-amber-700 text-lg">Зарегистрироваться</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer class="bg-gray-800 text-white py-12" role="contentinfo">
+                <div class="container mx-auto px-6">
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <div>
+                            <h3 class="text-lg font-bold mb-4">Mangus</h3>
+                            <p class="text-gray-400">Превратите клиентов в капитал.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold mb-4">Продукт</h3>
+                            <ul class="space-y-2">
+                                <li><a class="text-gray-400 hover:text-white" href="#">Функции</a></li>
+                                <li><a class="text-gray-400 hover:text-white" href="#pricing">Тарифы</a></li>
+                                <li><a class="text-gray-400 hover:text-white" href="#">Кейсы</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold mb-4">Ресурсы</h3>
+                            <ul class="space-y-2">
+                                <li><a class="text-gray-400 hover:text-white" href="#">Блог</a></li>
+                                <li><a class="text-gray-400 hover:text-white" href="#">Центр помощи</a></li>
+                                <li><a class="text-gray-400 hover:text-white" href="#contact">Связаться с нами</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold mb-4">Юридическая информация</h3>
+                            <ul class="space-y-2">
+                                <li><a class="text-gray-400 hover:text-white" href="#">Политика конфиденциальности</a>
+                                </li>
+                                <li><a class="text-gray-400 hover:text-white" href="#">Условия использования</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-12 border-t border-gray-700 pt-8 flex flex-col sm:flex-row justify-between items-center">
+                        <p class="text-gray-400">© 2025 Mangus. Все права защищены.</p>
+                        <div class="flex gap-4 mt-4 sm:mt-0">
+                            <a class="text-gray-400 hover:text-white" href="#" aria-label="Twitter"><svg
+                                    fill="currentColor" height="24" viewBox="0 0 256 256" width="24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z">
+                                    </path>
+                                </svg></a>
+                            <a class="text-gray-400 hover:text-white" href="#" aria-label="Instagram"><svg
+                                    fill="currentColor" height="24" viewBox="0 0 256 256" width="24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z">
+                                    </path>
+                                </svg></a>
+                            <a class="text-gray-400 hover:text-white" href="#" aria-label="Facebook"><svg
+                                    fill="currentColor" height="24" viewBox="0 0 256 256" width="24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M128,24A104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z">
+                                    </path>
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Fade-in animation on scroll
+        document.querySelectorAll('.fade-in').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(30px) scale(0.98)';
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUpScale 1s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            observer.observe(section);
+        });
+
+        // Animate cards with stagger
+        document.querySelectorAll('.card-animate').forEach((card, i) => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(40px) scale(0.96)';
+            card.style.animationDelay = (0.2 + i * 0.15) + 's';
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'cardFadeIn 0.8s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            observer.observe(card);
+        });
+
+        // Animate section titles
+        document.querySelectorAll('.section_title').forEach((title, i) => {
+            title.style.opacity = 0;
+            title.style.transform = 'translateX(-40px)';
+            title.style.animationDelay = (0.1 + i * 0.1) + 's';
+        });
+    </script>
+</body>
+
+</html>

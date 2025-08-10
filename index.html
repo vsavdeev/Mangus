@@ -25,11 +25,26 @@
             color: var(--text-primary);
         }
         .button_primary {
-            @apply bg-[var(--primary-color)] text-white py-3 px-6 rounded-md hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50 font-bold transition-colors;
-            transition: transform 0.2s;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: bold;
+            outline: none;
+            transition-property: background-color, color, transform;
+            transition-duration: 150ms;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         }
         .button_primary:hover {
+            background-color: #f59e0b;
             animation: bounceBtn 0.4s;
+        }
+        .button_primary:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #f59e0b40;
         }
         @keyframes bounceBtn {
             0% { transform: scale(1);}
@@ -38,13 +53,37 @@
             100% { transform: scale(1);}
         }
         .button_secondary {
-            @apply bg-[var(--secondary-color)] text-[var(--text-primary)] py-3 px-6 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50 font-bold transition-colors;
+            background-color: var(--secondary-color);
+            color: var(--text-primary);
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: bold;
+            outline: none;
+            transition-property: background-color, color;
+            transition-duration: 150ms;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .button_secondary:hover {
+            background-color: #d1d5db;
+        }
+        .button_secondary:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #f59e0b40;
         }
         .section {
-            @apply py-20;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
         }
         .section_title {
-            @apply text-4xl font-bold text-[var(--text-primary)] mb-4 text-center;
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-align: center;
             opacity: 0;
             transform: translateX(-40px);
             animation: slideInTitle 0.8s forwards;
@@ -56,10 +95,24 @@
             }
         }
         .section_subtitle {
-            @apply text-lg text-[var(--text-secondary)] mb-12 text-center max-w-3xl mx-auto;
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            text-align: center;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
         }
         .pricing-card {
-            @apply bg-white rounded-lg shadow-sm p-8 text-center border border-gray-100 flex flex-col h-full;
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         /* Animation styles */
         .fade-in {
@@ -180,9 +233,9 @@
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
                             href="how-it-works.html">Как это работает</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
-                            href="#business-benefits">Преимущества для бизнеса</a>
+                            href="business-benefits.html">Преимущества для бизнеса</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
-                            href="#customer-benefits">Возможности для клиентов</a>
+                            href="customer-benefits.html">Возможности для клиентов</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
                             href="#pricing">Тарифы</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
@@ -210,9 +263,9 @@
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
                             href="how-it-works.html">Как это работает</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
-                            href="#business-benefits">Преимущества для бизнеса</a>
+                            href="business-benefits.html">Преимущества для бизнеса</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
-                            href="#customer-benefits">Возможности для клиентов</a>
+                            href="customer-benefits.html">Возможности для клиентов</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
                             href="#pricing">Тарифы</a>
                         <a class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-base font-medium leading-normal transition-colors"
@@ -596,25 +649,30 @@
                 <section id="contact" class="section bg-gray-50 fade-in" role="region" aria-labelledby="contact-title">
                     <div class="container mx-auto px-6">
                         <h2 id="contact-title" class="section_title">Свяжитесь с нами</h2>
-                        <p class="section_subtitle">Готовы узнать больше или начать использовать Mangus? Напишите нам!</p>
+                        <p class="section_subtitle">Готовы узнать больше или начать использовать Mangus? Напишите нам!
+                        </p>
                         <div class="max-w-2xl mx-auto">
                             <div class="bg-white rounded-lg shadow-sm p-8 border border-gray-100">
                                 <form id="contact-form" class="flex flex-col gap-4">
                                     <div>
                                         <input
                                             class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
-                                            placeholder="Ваше имя" required type="text" id="name" name="name" aria-label="Ваше имя" />
+                                            placeholder="Ваше имя" required type="text" id="name" name="name"
+                                            aria-label="Ваше имя" />
                                         <p class="error-message" id="name-error">Пожалуйста, введите ваше имя</p>
                                     </div>
                                     <div>
                                         <input
                                             class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
-                                            placeholder="Ваш email" required type="email" id="email" name="email" aria-label="Ваш email" />
-                                        <p class="error-message" id="email-error">Пожалуйста, введите корректный email</p>
+                                            placeholder="Ваш email" required type="email" id="email" name="email"
+                                            aria-label="Ваш email" />
+                                        <p class="error-message" id="email-error">Пожалуйста, введите корректный email
+                                        </p>
                                     </div>
                                     <textarea
                                         class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
-                                        placeholder="Ваше сообщение" rows="5" id="message" name="message" aria-label="Ваше сообщение"></textarea>
+                                        placeholder="Ваше сообщение" rows="5" id="message" name="message"
+                                        aria-label="Ваше сообщение"></textarea>
                                     <button class="button_primary" type="submit">Отправить</button>
                                 </form>
                             </div>
