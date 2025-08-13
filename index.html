@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Mangus</title>
-    <link href="https://mangoloyalty.com/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="https://mangusloyalty.com/favicon.ico" rel="icon" type="image/x-icon" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
@@ -636,29 +636,54 @@
         
         .logo-container {
             display: inline-block;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2);
-            animation: logoFloat 6s ease-in-out infinite;
+            box-shadow: 0 25px 50px rgba(245, 158, 11, 0.3), 0 0 0 4px rgba(245, 158, 11, 0.1);
+            animation: logoFloat 6s ease-in-out infinite, logoPulse 3s ease-in-out infinite;
             position: relative;
             overflow: hidden;
+            border: 3px solid rgba(245, 158, 11, 0.2);
+            backdrop-filter: blur(10px);
         }
         
         .logo-container::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: conic-gradient(from 0deg, transparent, rgba(245, 158, 11, 0.3), transparent);
+            background: conic-gradient(from 0deg, transparent, rgba(245, 158, 11, 0.4), transparent);
             animation: logoRotate 4s linear infinite;
+            filter: blur(1px);
         }
         
         .logo-container::after {
             content: '';
             position: absolute;
             inset: 2px;
-            background: rgba(255, 255, 255, 0.9);
+            background: transparent;
             border-radius: 50%;
+        }
+        
+        /* Hover effects for logo */
+        .logo-container:hover {
+            transform: scale(1.1);
+            box-shadow: 0 30px 60px rgba(245, 158, 11, 0.4), 0 0 0 6px rgba(245, 158, 11, 0.3);
+            border-color: rgba(245, 158, 11, 0.4);
+        }
+        
+        .logo-container:hover .logo-svg {
+            filter: drop-shadow(0 6px 12px rgba(245, 158, 11, 0.7)) brightness(1.4) contrast(1.5);
+        }
+        
+
+        
+        @keyframes logoPulse {
+            0%, 100% { 
+                box-shadow: 0 25px 50px rgba(245, 158, 11, 0.3), 0 0 0 4px rgba(245, 158, 11, 0.1);
+            }
+            50% { 
+                box-shadow: 0 25px 50px rgba(245, 158, 11, 0.4), 0 0 0 4px rgba(245, 158, 11, 0.2);
+            }
         }
         
         @keyframes logoRotate {
@@ -667,21 +692,30 @@
         }
         
         @keyframes logoFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1); 
+                box-shadow: 0 25px 50px rgba(245, 158, 11, 0.3), 0 0 0 4px rgba(245, 158, 11, 0.1);
+            }
+            50% { 
+                transform: translateY(-20px) rotate(8deg) scale(1.05); 
+                box-shadow: 0 35px 70px rgba(245, 158, 11, 0.4), 0 0 0 6px rgba(245, 158, 11, 0.2);
+            }
         }
         
         .logo-svg {
-            width: 48px;
-            height: 48px;
+            width: 64px;
+            height: 64px;
             animation: logoSwing 4s ease-in-out infinite;
             object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.5)) brightness(1.2) contrast(1.3);
+            position: relative;
+            z-index: 10;
         }
         
         @keyframes logoSwing {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(10deg); }
-            75% { transform: rotate(-10deg); }
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(12deg) scale(1.02); }
+            75% { transform: rotate(-12deg) scale(1.02); }
         }
         
         .hero-title {
@@ -716,6 +750,21 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             position: relative;
+            z-index: 10;
+        }
+        
+        /* Ensure highlight text is always visible */
+        .title-line.highlight,
+        .hero-section:hover .title-line.highlight,
+        .hero-title:hover .title-line.highlight,
+        .title-line.highlight:hover {
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: inline-block !important;
+            background: linear-gradient(135deg, var(--primary-color), #f97316) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
         }
         
         .title-line.highlight::after {
@@ -730,6 +779,8 @@
             transform: translateX(-50%);
             animation: highlightExpand 1s ease-out 1s forwards;
             box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+            animation-fill-mode: forwards;
+            will-change: width;
         }
         
         .title-line.highlight::before {
@@ -960,9 +1011,33 @@
             filter: brightness(1.5);
         }
         
+        /* Prevent highlight from disappearing on hover */
+        .hero-section:hover .title-line.highlight::after {
+            width: 100% !important;
+            animation: none !important;
+        }
+        
+        /* Ensure highlight stays visible */
+        .title-line.highlight::after {
+            transition: width 0.3s ease;
+        }
+        
         /* Glitch effect for title on hover */
         .hero-title:hover .title-line.highlight {
             animation: glitch 0.3s ease-in-out;
+        }
+        
+        /* Prevent any conflicts with highlight animations */
+        .title-line.highlight *,
+        .title-line.highlight::before,
+        .title-line.highlight::after {
+            pointer-events: none;
+        }
+        
+        /* Ensure highlight container is stable */
+        .title-line.highlight {
+            transform: none !important;
+            filter: none !important;
         }
         
         @keyframes glitch {
@@ -1012,8 +1087,8 @@
                         </button>
                     </div>
                     <div class="flex items-center gap-4">
-                        <a class="button_secondary" href="#">Вход</a>
-                        <a class="button_primary hidden sm:inline-flex" href="#">Регистрация</a>
+                        <!-- <a class="button_secondary" href="#">Вход</a> -->
+                        <!-- <a class="button_primary hidden sm:inline-flex" href="#">Регистрация</a> -->
                     </div>
                 </div>
                 <div id="mobile-menu" class="hidden md:hidden bg-[var(--background-color)]/95 px-6 py-4">
@@ -1586,7 +1661,7 @@
                                 <h2 class="text-3xl md:text-4xl font-bold mb-6">Готовы увеличить продажи и получить оборотный капитал?</h2>
                                 <p class="text-xl mb-8 max-w-2xl mx-auto">Подключите программу лояльности Mangus и начните получать предоплаты от клиентов уже сегодня</p>
                                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                                    <a href="#" class="button_white text-lg">Зарегистрироваться</a>
+                                    <a href="https://forms.gle/ufWAaHkbmJfx8y9e6" target="_blank" class="button_white text-lg">Попробовать бесплатно</a>
                                 </div>
                             </div>
                         </div>
@@ -1599,26 +1674,10 @@
             </main>
             <footer class="bg-gray-800 text-white py-12" role="contentinfo">
                 <div class="container mx-auto px-6">
-                    <div class="grid md:grid-cols-4 gap-8">
+                    <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto text-center">
                         <div>
                             <h3 class="text-lg font-bold mb-4">Mangus</h3>
                             <p class="text-gray-400">Превратите клиентов в капитал.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold mb-4">Продукт</h3>
-                            <ul class="space-y-2">
-                                <li><a class="text-gray-400 hover:text-white" href="#">Функции</a></li>
-                                <li><a class="text-gray-400 hover:text-white" href="pricing.html">Тарифы</a></li>
-                                <li><a class="text-gray-400 hover:text-white" href="#">Кейсы</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold mb-4">Ресурсы</h3>
-                            <ul class="space-y-2">
-                                <li><a class="text-gray-400 hover:text-white" href="#">Блог</a></li>
-                                <li><a class="text-gray-400 hover:text-white" href="#">Центр помощи</a></li>
-                                <li><a class="text-gray-400 hover:text-white" href="#contact">Связаться с нами</a></li>
-                            </ul>
                         </div>
                         <div>
                             <h3 class="text-lg font-bold mb-4">Юридическая информация</h3>
@@ -1770,33 +1829,48 @@
                 heroSection.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
             });
             
-            // Intersection Observer for hero animations
-            const heroObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Trigger additional animations
-                        entry.target.classList.add('hero-visible');
-                        
-                        // Animate floating shapes with stagger
-                        const shapes = entry.target.querySelectorAll('.shape');
-                        shapes.forEach((shape, index) => {
-                            setTimeout(() => {
-                                shape.style.animationPlayState = 'running';
-                            }, index * 200);
-                        });
-                        
-                        // Animate particles with stagger
-                        const particles = entry.target.querySelectorAll('.particle');
-                        particles.forEach((particle, index) => {
-                            setTimeout(() => {
-                                particle.style.animationPlayState = 'running';
-                            }, index * 100);
-                        });
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            heroObserver.observe(heroSection);
+                         // Intersection Observer for hero animations
+             const heroObserver = new IntersectionObserver((entries) => {
+                 entries.forEach(entry => {
+                     if (entry.isIntersecting && !entry.target.classList.contains('hero-animated')) {
+                         // Mark as animated to prevent re-animation
+                         entry.target.classList.add('hero-animated');
+                         
+                         // Trigger additional animations
+                         entry.target.classList.add('hero-visible');
+                         
+                         // Animate floating shapes with stagger
+                         const shapes = entry.target.querySelectorAll('.shape');
+                         shapes.forEach((shape, index) => {
+                             setTimeout(() => {
+                                 shape.style.animationPlayState = 'running';
+                             }, index * 200);
+                         });
+                         
+                         // Animate particles with stagger
+                         const particles = entry.target.querySelectorAll('.particle');
+                         particles.forEach((particle, index) => {
+                             setTimeout(() => {
+                                 particle.style.animationPlayState = 'running';
+                             }, index * 100);
+                         });
+                         
+                         // Ensure highlight animation runs
+                         const highlightElement = entry.target.querySelector('.title-line.highlight');
+                         if (highlightElement) {
+                             setTimeout(() => {
+                                 const highlightAfter = highlightElement.querySelector('::after') || 
+                                                       highlightElement.nextElementSibling;
+                                 if (highlightAfter) {
+                                     highlightAfter.style.width = '100%';
+                                 }
+                             }, 1500);
+                         }
+                     }
+                 });
+             }, { threshold: 0.1 });
+             
+             heroObserver.observe(heroSection);
             
             // Add click effect for shapes
             const shapes = heroSection.querySelectorAll('.shape');

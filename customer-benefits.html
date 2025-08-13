@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Возможности для клиентов | Mangus</title>
-    <link href="https://mangoloyalty.com/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="https://mangusloyalty.com/favicon.ico" rel="icon" type="image/x-icon" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
@@ -109,8 +109,16 @@
         }
         .section_title {
             @apply text-4xl font-bold text-[var(--text-primary)] mb-4 text-center;
-            opacity: 1;
-            transform: translateX(0);
+            opacity: 0;
+            transform: translateX(-40px);
+            animation: slideInTitle 0.8s forwards;
+        }
+        
+        @keyframes slideInTitle {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         .section_subtitle {
             font-size: 1.125rem;
@@ -121,33 +129,47 @@
             margin-left: auto;
             margin-right: auto;
         }
-        /* Animation styles - completely removed to prevent disappearing */
+        /* Animation styles */
         .fade-in {
-            opacity: 1 !important;
-            transform: none !important;
-            animation: none !important;
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            animation: fadeInUpScale 1s forwards;
         }
         
-        /* Card animation - completely removed */
+        @keyframes fadeInUpScale {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* Card animation */
         .card-animate {
-            opacity: 1 !important;
-            transform: none !important;
-            animation: none !important;
+            opacity: 0;
+            transform: translateY(40px) scale(0.96);
+            animation: cardFadeIn 0.8s forwards;
         }
         
-        /* Ensure all cards are always visible */
+        @keyframes cardFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* Modern card styles */
         .modern-card {
-            opacity: 1 !important;
-            transform: none !important;
-            animation: none !important;
-            visibility: visible !important;
-            display: block !important;
-        }
-        
-        /* Ensure all content inside cards is visible */
-        .modern-card * {
-            opacity: 1 !important;
-            visibility: visible !important;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            border: 1px solid rgba(241, 245, 249, 0.8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            backdrop-filter: blur(10px);
+            max-width: 1000px;
+            margin: 0 auto 3rem auto;
+            padding: 2rem;
         }
         /* Modern card styles */
         .modern-card {
@@ -380,8 +402,8 @@
                         </button>
                     </div>
                     <div class="flex items-center gap-4">
-                        <a class="button_secondary" href="#">Вход</a>
-                        <a class="button_primary hidden sm:inline-flex" href="#">Регистрация</a>
+                        <!-- <a class="button_secondary" href="#">Вход</a> -->
+                        <!-- <a class="button_primary hidden sm:inline-flex" href="#">Регистрация</a> -->
                     </div>
                 </div>
                 <div id="mobile-menu" class="hidden md:hidden bg-[var(--background-color)]/95 px-6 py-4">
@@ -402,13 +424,13 @@
                 </div>
             </header>
             <main>
-                <section id="customer-benefits" class="section" role="region" aria-labelledby="customer-benefits-title">
+                <section id="customer-benefits" class="section fade-in" role="region" aria-labelledby="customer-benefits-title">
                     <div class="container mx-auto px-6">
                         <h2 id="customer-benefits-title" class="section_title">Возможности для клиентов</h2>
                         <p class="section_subtitle">Узнайте, как Mangus делает покупки удобнее и выгоднее для ваших клиентов</p>
                         
                         <!-- Карточка 1 -->
-                        <div class="modern-card">
+                        <div class="modern-card card-animate">
                             <div class="card-content-wrapper">
                                 <div class="card-image-section">
                                     <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
@@ -454,7 +476,7 @@
                         </div>
                         
                         <!-- Карточка 2 -->
-                        <div class="modern-card">
+                        <div class="modern-card card-animate">
                             <div class="card-content-wrapper">
                                 <div class="card-image-section">
                                     <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
@@ -499,7 +521,7 @@
                         </div>
                         
                         <!-- Карточка 3 -->
-                        <div class="modern-card">
+                        <div class="modern-card card-animate">
                             <div class="card-content-wrapper">
                                 <div class="card-image-section">
                                     <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
@@ -562,7 +584,7 @@
                 </section>
                 
                 <!-- Call to Action -->
-                <section class="section">
+                <section class="section fade-in">
                     <div class="container mx-auto px-6">
                         <div class="cta-section">
                             <div class="cta-pattern"></div>
@@ -570,7 +592,7 @@
                                 <h2 class="text-3xl md:text-4xl font-bold mb-6">Готовы увеличить продажи и получить оборотный капитал?</h2>
                                 <p class="text-xl mb-8 max-w-2xl mx-auto">Подключите программу лояльности Mangus и начните получать предоплаты от клиентов уже сегодня</p>
                                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                                    <a href="#" class="button_white text-lg">Зарегистрироваться</a>                         
+                                    <a href="https://forms.gle/ufWAaHkbmJfx8y9e6" target="_blank" class="button_white text-lg">Попробовать бесплатно</a>                         
                                 </div>
                             </div>
                         </div>
@@ -579,26 +601,10 @@
             </main>
             <footer class="bg-gray-800 text-white py-12" role="contentinfo">
                 <div class="container mx-auto px-6">
-                    <div class="grid md:grid-cols-4 gap-8">
+                    <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto text-center">
                         <div>
                             <h3 class="text-lg font-bold mb-4">Mangus</h3>
                             <p class="text-gray-400">Превратите клиентов в капитал.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold mb-4">Продукт</h3>
-                            <ul class="space-y-2">
-                                <li><a class="text-gray-400 hover:text-white" href="#">Функции</a></li>
-                                <li><a class="text-gray-400 hover:text-white" href="pricing.html">Тарифы</a></li>
-                                <li><a class="text-gray-400 hover:text-white" href="#">Кейсы</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold mb-4">Ресурсы</h3>
-                            <ul class="space-y-2">
-                                <li><a class="text-gray-400 hover:text-white" href="#">Блог</a></li>
-                                <li><a class="text-gray-400 hover:text-white" href="#">Центр помощи</a></li>
-                                <li><a class="text-gray-400 hover:text-white" href="#contact">Связаться с нами</a></li>
-                            </ul>
                         </div>
                         <div>
                             <h3 class="text-lg font-bold mb-4">Юридическая информация</h3>
@@ -646,16 +652,55 @@
             menu.classList.toggle('hidden');
         });
 
-        // All animations completely removed - elements stay visible
-        document.addEventListener('DOMContentLoaded', function() {
-            // Force all elements to be visible
-            document.querySelectorAll('.fade-in, .card-animate, .modern-card, .section_title').forEach(element => {
-                element.style.opacity = '1';
-                element.style.transform = 'none';
-                element.style.animation = 'none';
-                element.style.visibility = 'visible';
-                element.style.display = 'block';
-            });
+        // Fade-in animation on scroll
+        document.querySelectorAll('.fade-in').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(30px) scale(0.98)';
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUpScale 1s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            observer.observe(section);
+        });
+
+        // Animate cards with stagger
+        document.querySelectorAll('.card-animate').forEach((card, i) => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(40px) scale(0.96)';
+            card.style.animationDelay = (0.2 + i * 0.15) + 's';
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                        entry.target.classList.add('animated');
+                        entry.target.style.animation = 'cardFadeIn 0.8s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            observer.observe(card);
+        });
+
+        // Animate section titles
+        document.querySelectorAll('.section_title').forEach((title, i) => {
+            title.style.opacity = 0;
+            title.style.transform = 'translateX(-40px)';
+            title.style.animationDelay = (0.1 + i * 0.1) + 's';
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                        entry.target.classList.add('animated');
+                        entry.target.style.animation = 'slideInTitle 0.8s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            observer.observe(title);
         });
     </script>
 </body>

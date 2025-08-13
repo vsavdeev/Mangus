@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Тарифы | Mangus</title>
-    <link href="https://mangoloyalty.com/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="https://mangusloyalty.com/favicon.ico" rel="icon" type="image/x-icon" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
@@ -59,6 +59,56 @@
             background-color: var(--primary-color);
             color: white;
             transform: translateY(-2px);
+        }
+        
+        /* Animation styles */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            animation: fadeInUpScale 1s forwards;
+        }
+        
+        @keyframes fadeInUpScale {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .card-animate {
+            opacity: 0;
+            transform: translateY(40px) scale(0.96);
+            animation: cardFadeIn 0.8s forwards;
+        }
+        
+        @keyframes cardFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* CTA section */
+        .cta-section {
+            background: linear-gradient(to bottom right, var(--primary-color), #f97316);
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 10;
         }
         
         /* Section styles */
@@ -318,8 +368,8 @@
                     </nav>
                     
                     <div class="flex items-center gap-4">
-                        <a class="button_white" href="#">Вход</a>
-                        <a class="button_primary hidden sm:inline-flex" href="#">Регистрация</a>
+                        <!-- <a class="button_white" href="#">Вход</a> -->
+                        <!-- <a class="button_primary hidden sm:inline-flex" href="#">Регистрация</a> -->
                     </div>
                 </div>
             </header>
@@ -327,7 +377,7 @@
             <!-- Main content -->
             <main>
                 <!-- Hero section -->
-                <section class="section bg-gradient-to-br from-amber-50 to-orange-50">
+                <section class="section bg-gradient-to-br from-amber-50 to-orange-50 fade-in">
                     <div class="container mx-auto px-6 text-center">
                         <h1 class="section_title mb-6">Выберите идеальный тариф</h1>
                         <p class="section_subtitle text-xl">Гибкие планы для бизнеса любого размера. Начните с малого и масштабируйтесь по мере роста.</p>
@@ -335,11 +385,11 @@
                 </section>
 
                 <!-- Pricing section -->
-                <section class="section">
+                <section class="section fade-in">
                     <div class="container mx-auto px-6">
                         <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                             <!-- Старт тариф -->
-                            <div class="pricing-card fade-in-up">
+                            <div class="pricing-card card-animate">
                                 <div class="card-icon-wrapper">
                                     <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path>
@@ -380,7 +430,7 @@
                             </div>
 
                             <!-- Про тариф (featured) -->
-                            <div class="pricing-card featured fade-in-up floating">
+                            <div class="pricing-card featured card-animate floating">
                                 <div class="featured-badge">Популярный</div>
                                 
                                 <div class="card-icon-wrapper">
@@ -431,7 +481,7 @@
                             </div>
 
                             <!-- Премиум тариф -->
-                            <div class="pricing-card fade-in-up">
+                            <div class="pricing-card card-animate">
                                 <div class="card-icon-wrapper">
                                     <svg fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm45.09-61.66a8,8,0,0,1-11.32,11.32L128,123.31,93.66,157.66a8,8,0,0,1-11.32-11.32L116.69,112,82.34,77.66A8,8,0,0,1,93.66,66.34L128,100.69l34.34-34.35A8,8,0,0,1,11.32,77.66L139.31,112Z"></path>
@@ -483,15 +533,15 @@
                 </section>
 
                 <!-- CTA section -->
-                <section class="section">
+                <section class="section fade-in">
                     <div class="container mx-auto px-6">
                         <div class="cta-section">
+                            <div class="cta-pattern"></div>
                             <div class="cta-content">
                                 <h2 class="text-4xl font-bold mb-6">Готовы начать?</h2>
                                 <p class="text-xl mb-8 max-w-2xl mx-auto">Выберите подходящий тариф и начните получать предоплаты от клиентов уже сегодня</p>
                                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                                    <a href="#" class="button_white text-lg">Связаться с нами</a>
-                                    <a href="#" class="button_primary text-lg">Попробовать бесплатно</a>
+                                    <a href="https://forms.gle/ufWAaHkbmJfx8y9e6" target="_blank" class="button_white text-lg">Попробовать бесплатно</a>
                                 </div>
                             </div>
                         </div>
@@ -502,26 +552,10 @@
             <!-- Footer -->
             <footer class="bg-gray-800 text-white py-12" role="contentinfo">
                 <div class="container mx-auto px-6">
-                    <div class="grid md:grid-cols-4 gap-8">
+                    <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto text-center">
                         <div>
                             <h3 class="text-lg font-bold mb-4">Mangus</h3>
                             <p class="text-gray-400">Превратите клиентов в капитал.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold mb-4">Продукт</h3>
-                            <ul class="space-y-2">
-                                <li><a class="text-gray-400 hover:text-white" href="#">Функции</a></li>
-                                <li><a class="text-gray-400 hover:text-white" href="pricing.html">Тарифы</a></li>
-                                <li><a class="text-gray-400 hover:text-white" href="#">Кейсы</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold mb-4">Ресурсы</h3>
-                            <ul class="space-y-2">
-                                <li><a class="text-gray-400 hover:text-white" href="#">Блог</a></li>
-                                <li><a class="text-gray-400 hover:text-white" href="#">Центр помощи</a></li>
-                                <li><a class="text-gray-400 hover:text-white" href="#contact">Связаться с нами</a></li>
-                            </ul>
                         </div>
                         <div>
                             <h3 class="text-lg font-bold mb-4">Юридическая информация</h3>
@@ -540,23 +574,37 @@
     </div>
 
     <script>
-        // Smooth scroll animation for pricing cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Fade-in animation on scroll
+        document.querySelectorAll('.fade-in').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(30px) scale(0.98)';
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUpScale 1s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            observer.observe(section);
+        });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all pricing cards
-        document.querySelectorAll('.pricing-card').forEach(card => {
+        // Animate cards with stagger
+        document.querySelectorAll('.card-animate').forEach((card, i) => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(40px) scale(0.96)';
+            card.style.animationDelay = (0.2 + i * 0.15) + 's';
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                        entry.target.classList.add('animated');
+                        entry.target.style.animation = 'cardFadeIn 0.8s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
             observer.observe(card);
         });
 
